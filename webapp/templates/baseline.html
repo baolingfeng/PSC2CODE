@@ -1,0 +1,141 @@
+<!doctype html>
+<title>Baseline Results</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+var csrftoken = $('meta[name=csrf-token]').attr('content')
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        }
+    }
+})
+</script>
+
+{% set video_folder = video_info['video_name'] + '_' + video_info['video_hash'] %}
+
+<div class="w3-xlarge bold-text header"><span id="video_name">{{video_info['video_name']}}</span></div> 
+
+<h2>Results of Baseline</h2> 
+
+<button class="collapsible"><span>Frames with Code Region ({{video_info['code_frames']|length}})</span></button>
+<div class="content">
+    <div class="slideshow-container">
+        <div id="valid_text">1 / {{video_info['code_frames']|length}}</div>
+        <div class="mySlides">
+            <img id="valid" src="/videos/{{video_folder}}/{{video_info['code_frames'][0][0]}}" style="width:100%">
+        </div>
+        
+        <a class="prev" onclick="plusSlides('valid', -1)">&#10094;</a>
+        <a class="next" onclick="plusSlides('valid', 1)">&#10095;</a>
+
+    </div>
+
+</div>
+
+<button class="collapsible"><span>Frames with NoCode Region ({{video_info['nocode_frames']|length}})</span></button>
+<div class="content">
+    <div class="slideshow-container">
+            <div id="invalid_text">1 / {{video_info['nocode_frames']|length}}</div>
+            <div class="mySlides">
+                <img id="invalid" src="/videos/{{video_folder}}/{{video_info['nocode_frames'][0]}}" style="width:100%">
+            </div>
+        
+            <a class="prev" onclick="plusSlides('invalid', -1)">&#10094;</a>
+            <a class="next" onclick="plusSlides('invalid', 1)">&#10095;</a>
+    </div>
+</div>
+
+
+<script>
+    $('.collapsible').each(function(idx){
+        $(this).on("click", function(){
+            console.log("click")
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+
+        if(idx == 0){
+            $(this).trigger('click')
+        }     
+    })
+
+    var video_info = {{video_info|tojson}}
+    var valid_frames = video_info['code_frames']
+    var invalid_frames = video_info['nocode_frames']
+    var video_name = video_info['video_name']
+    var video_hash = video_info['video_hash']
+    var predict_info = video_info['predict']
+
+    var video_folder = video_name + '_' + video_hash
+
+    var validIndex = 0;
+    var invalidIndex = 0;
+    showSlides("valid", valid_frames, validIndex);
+
+    // Next/previous controls
+    function plusSlides(image, n) {
+        if(image == "valid"){
+            validIndex += n
+            if(validIndex > valid_frames.length-1){
+                validIndex = 0
+            }
+            if(validIndex < 0){
+                validIndex = valid_frames.length-1
+            }
+            k = validIndex
+
+            slides = valid_frames
+        }else{
+            invalidIndex += n
+            if(invalidIndex > invalid_frames.length-1){
+                invalidIndex = 0
+            }
+            if(invalidIndex < 0){
+                invalidIndex = invalid_frames.length-1
+            }
+            k = invalidIndex
+            slides = invalid_frames
+        }
+
+        // console.log(k)
+        showSlides(image, slides, k);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(image, slides, n);
+    }
+
+    function showSlides(image, slides, n) {
+        if (n > slides.length) {slideIndex = 1} 
+        
+        if (n < 1) {slideIndex = slides.length}
+        
+        if(image == 'valid'){
+            frame = slides[n][0]
+            rects = slides[n][1]
+            url = '/videos/' + video_folder + "/" + frame + "?rects=" + rects
+        }
+        else{
+            frame = slides[n]
+            url = '/videos/' + video_folder + "/" + frame
+        }
+   
+        $('#'+image).attr("src", url);
+        $('#'+image+"_text").text((n+1) + "/" + slides.length) 
+    }
+
+</script>
+

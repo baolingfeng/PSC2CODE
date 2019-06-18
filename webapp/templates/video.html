@@ -1,0 +1,339 @@
+﻿<!doctype html>
+<title>Code Motion</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/diff2html.min.css') }}"> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='codemirror.css') }}">
+
+<script src="{{ url_for('static',filename='jquery.js') }}"></script>
+<script src="{{ url_for('static',filename='util.js') }}"></script>
+<script src="{{ url_for('static',filename='codemirror.js') }}"></script>
+<script src="{{ url_for('static',filename='clike.js') }}"></script>
+
+<!-- <script src="{{ url_for('static',filename='diff2html.js') }}"></script>
+<script scr="{{ url_for('static',filename='diff2html-ui.js') }}"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<div class="w3-xlarge bold-text header">
+    <span id="video_name">{{video_info['video_name']}}</span>
+</div> 
+
+<div class="youtube">
+    <!-- <iframe id="ytplayer" type="text/html" width="640" height="360" 
+        src="https://www.youtube.com/embed/{{video_info['hash']}}?enablejsapi=1" frameborder="0">
+    </iframe> -->
+    <div id="player"></div>
+    <div class="info">
+            {% if video_info['has_processed'] %}
+                    <button class="w3-btn" name="btnViewPredict">View Validated Frames</button>
+                    <button class="w3-btn" name="btnViewCrop">View Frames with Detected Code Area</button>
+                    <button class="w3-btn" name="btnViewOCR">View Original OCR content</button>
+            {% else %}
+                <button class="w3-btn" name="btnAnalyze">Video Analysis</button>
+                <div id="progress"></div>
+            {% endif %}
+    </div>
+</div>
+{% if video_info.ocr %}
+<div class="rightbar">
+<div class="navigation" id="navigation">
+    <ul>
+        <li><a href="#actions">Actions</a></li>
+        <li><a href="#files">Files</a></li>
+    </ul>
+    <div id="actions">
+        <table class="actiontable">
+        <tr>
+            <th>Timestamp</th><th>Action</th><th>Detail</th>
+        </tr>
+        {% for action in video_info["ocr"]["actions"] %}  
+            {% set file1 = video_info["ocr"]["file_names"][action["cluster1"]|string] %}  
+            {% set file2 = video_info["ocr"]["file_names"][action["cluster2"]|string] %}  
+        <tr>
+            <td>
+                <span class="timestamp" frame1="{{action['frame1']}}", frame2="{{action['frame2']}}">[{{action['display_time']}}]</span>
+            </td>
+            {% if action['type'] == "edit" %}
+                {% set list1 = action['delta'].split('\n') %}
+            <td>Edit</td>
+            <td>
+                <button class="action"><label class="actionfile">{{file1}}</label> with {{action['deleted']}} deletions and {{action['inserted']}} insertions</button>  
+                <div class="diff">
+                    {% for line in list1 %}
+                        {% if line.startswith("+") %}
+                            <p class="d2h-lines-added">{{line}}</p>
+                        {% else %}
+                            <p class="d2h-lines-deleted">{{line}}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+            {% else %}
+            <td>Switch</td>
+            <td>
+                <button class="action" frame1="{{action['frame1']}}", frame2="{{action['frame2']}}">
+                        <label class="actionfile">{{file1}}</label> ==> <label class="actionfile">{{file2}}</label>
+                </button> 
+            </td>
+            {% endif %}   
+        {% endfor %}
+        </table> 
+    </div>
+    <div id="files">
+        <div id="files-2">
+                <ul>
+                    {% set file_num = video_info["ocr"]["file_names"].items()|length %}
+                    {% for cluster in range(file_num) %}
+                    {# for cluster, filename in video_info["ocr"]["file_names"].items() #}
+                        {% set filename = video_info["ocr"]["file_names"][cluster|string] %}
+                        {% if filename.startswith("Unknown File") %}
+                            <li><a href="#tabs-file-{{cluster}}">{{filename}}</a></li>
+                        {% else %}
+                        <li><a href="#tabs-file-{{cluster}}">{{filename}}.java</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                {# for cluster, filename in video_info["ocr"]["file_names"].items() #}
+                {% for cluster in range(file_num) %}
+                    <div id="tabs-file-{{cluster}}" cluster="{{cluster}}">
+                        <div id="file-{{cluster}}"><textarea id="file-{{cluster}}-text"></textarea></div>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+
+
+<script>
+    var video_info = {{ video_info|tojson }};
+    var video_hash = video_info['video_hash']
+    var video_name = video_info['video_name']
+    var link = 'https://www.youtube.com/watch?v=' + video_info['video_hash']
+
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    var previous_frame = -1
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: video_hash,
+            events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+        // setFileContent()
+        setInterval(monitor_player, 500)
+        // event.target.playVideo();
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+            // setTimeout(stopVideo, 6000);
+            done = true;
+        }
+        setFileContent(false)
+    }
+
+    function stopVideo() {
+        player.stopVideo();
+    }
+
+    if(video_info.ocr != undefined){
+        var editors = {}
+        for(var cluster in video_info['ocr']['file_names']){
+            editors[cluster] = CodeMirror.fromTextArea(document.getElementById("file-"+cluster+"-text"), {
+               lineNumbers: true,
+                matchBrackets: true,
+                readOnly: true,
+                mode: "text/x-java"
+            });
+            editors[cluster].setSize("100%", "400px")
+        }
+
+        $( "#navigation" ).tabs({
+            beforeActivate: function (event, ui) {
+                setFileContent(true)
+            }
+        });
+
+        $( "#files-2" ).tabs({
+            beforeActivate: function (event, ui) {
+                cid = ui.newPanel.attr('cluster')
+                setTimeout(function() {editors[cid].refresh();}, 0.5);
+            }
+        }).addClass( "ui-tabs-vertical ui-helper-clearfix" );
+        $( "#files-2 li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+
+    }
+
+
+    function setFileContent(refresh){
+        if(video_info.ocr == undefined){
+            return
+        }
+
+        t = parseInt(player.getCurrentTime())
+        ocr = video_info['ocr']
+        
+        for(i=ocr['frames'].length; i>=0; i--){
+            frame = ocr['frames'][i]
+            if(t >= frame){
+                break
+            }
+        }
+        
+        if(frame == previous_frame && !refresh){
+            return
+        }
+        previous_frame = frame
+
+        docs = video_info['ocr']['docs']
+        file_id = docs[frame+""]['cluster']
+        file_lines = docs[frame+""]['lines']
+        $("#files-2").tabs("option", "active", file_id);  
+        editors[file_id].setValue(file_lines)
+        
+        console.log(t+"/"+frame + "/" + file_id)
+        // editors[file_id].refresh();
+        setTimeout(function() {
+            editors[file_id].refresh();
+        },1);
+        // $("#tabs-file-"+file_id).html(file_lines.join("<br/>"))
+    }
+
+    function monitor_player(){
+        if(video_info.ocr == undefined || player == undefined){
+            return
+        }
+        
+        setFileContent()
+    }
+
+    $('.action').each(function(idx){
+        $(this).on("click", function(){
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if(content != null){
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            }
+        });
+    })
+
+    $('.timestamp').each(function(idx){
+        $(this).on("click", function(){
+            frame2 = parseInt($(this).attr("frame2"))
+            player.seekTo(frame2-5)
+            // setTimeout(player.pauseVideo(), 1000);
+        })
+    })
+
+    $("button[name='btnAnalyze']").click(function(){
+        console.log('process ' + link)
+        $('#progress').html("")
+
+        pullvideo(link)
+    })
+
+    $("button[name='btnViewPredict']").click(function(){
+        window.open("/video/predict?v="+video_info['video_hash'], "_blank")
+    })
+    
+    $("button[name='btnViewCrop']").click(function(){
+        window.open("/video/crop?v="+video_info['video_hash'], "_blank")
+    })
+
+    $("button[name='btnViewOCR']").click(function(){
+        window.open("/video/ocr?v="+video_info['video_hash'], "_blank")
+    })
+
+    function pullvideo(youtube_url){
+        $.ajax({
+            url: '/pullvideo',
+            type: 'post',
+            contentType: "application/json", 
+            data: JSON.stringify({'url': youtube_url}),
+            beforeSend: function(){
+                $('#progress').append('<p>start to download video from youtube...</p>')
+            },
+            success: function(data){
+                video_hash = data['video_hash']
+                video_name = data['video_name']
+
+                $('#progress').append('<p>finish to download video [' + video_name + ']</p>')
+                
+                diffvideo(video_hash, video_name)
+            }
+        })
+    }
+
+    function diffvideo(video_hash, video_name){
+        $.ajax({
+            url: '/diffvideo',
+            type: 'post',
+            contentType: "application/json", 
+            data: JSON.stringify({'video_hash': video_hash, 'video_name': video_name}),
+            beforeSend: function(){
+                $('#progress').append('<p>start to extract distinct frames from video...</p>')
+            },
+            success: function(data){
+                $('#progress').append('<p>finish to extract distinct frames from video</p>')
+                predictvideo(video_hash, video_name)
+            }
+        })
+    }
+
+    function predictvideo(video_hash, video_name){
+        $.ajax({
+            url: '/predictvideo',
+            type: 'post',
+            contentType: "application/json", 
+            data: JSON.stringify({'video_hash': video_hash, 'video_name': video_name}),
+            beforeSend: function(){
+                $('#progress').append('<p>predicting frames in video...</p>')
+            },
+            success: function(data){
+                $('#progress').append('<p>finish to predict frames in video</p>')
+                cropvideo(video_hash, video_name)
+            }
+        })
+    }
+
+    function cropvideo(video_hash, video_name){
+        $.ajax({
+            url: '/cropvideo',
+            type: 'post',
+            contentType: "application/json", 
+            data: JSON.stringify({'video_hash': video_hash, 'video_name': video_name}),
+            beforeSend: function(){
+                $('#progress').append('<p>start to detect code area in frames...</p>')
+            },
+            success: function(data){
+                $('#progress').append('<p>finish to detect code area in frames</p>')
+            }
+        })
+    }
+
+
+</script>

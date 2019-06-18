@@ -1,0 +1,258 @@
+﻿<!doctype html>
+<title>Label Image</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+var csrftoken = $('meta[name=csrf-token]').attr('content')
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        }
+    }
+})
+</script>
+
+<div class="w3-xlarge bold-text header"><span id="video_name">{{video_info['video_name']}}</span></div> 
+
+<div class="info">
+    We detect <label class="w3-medium bold-text">{{video_info['clusters']|length}}</label> different layouts with
+    <label class="w3-medium bold-text">  {{video_info['clustered']}}</label> clustered frames in total.<br/>
+</div>
+
+<h2>Cropped Frames</h2> 
+
+{% for cluster in video_info['clusters'] %}
+<button class="collapsible w3-text-blue w3-xlarge bold-text"><span>Cluster {{loop.index0 }} ({{cluster.1|length}})</span></button>
+<div class="content">
+    <div class="slideshow-container" style="float:left;margin-left:5%;width:70%">
+        <div id="frames_{{loop.index0 }}_text">1 / {{cluster.1|length}}</div>
+        <div class="mySlides">
+            <img id="frames_{{loop.index0 }}" src="" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusImages({{loop.index0 }}, -1)">&#10094;</a>
+        <a class="next" onclick="plusImages({{loop.index0 }}, 1)">&#10095;</a>
+    </div>
+    <div class="info" style="float:right; margin:10px; width:30%;">
+        <div class="rects" style="width:100%;margin:10px;">
+            <span class="subtitle">Detected Rectangles</span> <br/>
+            {% set outer_loop = loop %}
+            {% for rect in cluster.2 %}
+                <label style="font-size: 15px">x1:</label><input name="x1_{{outer_loop.index0}}" type="text" value="{{rect.0}}"/>
+                <label style="font-size: 15px">y1:</label><input name="y1_{{outer_loop.index0}}" type="text" value="{{rect.1}}"/><br/>
+                <label style="font-size: 15px">x2:</label><input name="x2_{{outer_loop.index0}}" type="text" value="{{rect.2}}"/>
+                <label style="font-size: 15px">y2:</label><input name="y2_{{outer_loop.index0}}" type="text" value="{{rect.3}}"/><br/>
+            {% endfor %}
+            <button class="w3-btn" name="updaterect" cluster="{{loop.index0 }}">Update Rectangles</button>
+        </div>
+        <br/>
+        {% if cluster.3 %}
+            <input class="w3-btn" type="checkbox" name="tobecropped" value="{{loop.index0 }}" checked> <span class="w3-check">To be Cropped</span><br>
+        {% else %}
+            <input class="w3-check" type="checkbox" name="tobecropped" value="{{loop.index0 }}"> <span class="w3-check">To be Cropped</span><br>
+        {% endif %}
+        <br/>
+        <button class="w3-btn" name="removeframe" cluster="{{loop.index0 }}">Remove Current Frames</button>
+    </div>
+</div>
+{% endfor %}
+
+<form class="form-style-9" id="form" action="#", method="post">
+    <label class=".w3-large bold-text">You can detect code area by the custom setting</label><br/>
+    <table class=".w3-medium" style="font: 12px Arial, Helvetica, sans-serif;">
+        <tr>
+            <td>eps1:</td><td><input name="eps1" type="text" value="3"/></td>
+            <td>eps2:</td><td><input name="eps2" type="text" value="2"/></td>
+        </tr>
+        <tr>
+            <td>min samples:</td><td><input name="min_samples" type="text" value="2"/> </td>
+            <td>line ratio:</td><td><input name="line_ratio" type="text" value="0.7"/> </td>
+        </tr>
+    </table> 
+    <button class="w3-btn" type="button" name="submit">Submit</button>
+</form>
+
+<script>
+    $('.collapsible').each(function(idx){
+        $(this).on("click", function(){
+            console.log("click")
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+
+        if(idx == 0){
+            $(this).trigger('click')
+        }     
+    })
+
+    var video_info = {{video_info|tojson}}
+    var crops = video_info['clusters']
+    var config = video_info['config']
+    console.log(video_info)
+
+    video_name = video_info['video_name']
+    video_hash = video_info['video_hash']
+    video_folder = video_name + '_' + video_hash
+    // $("#info").html("Clustered frames: "+video_info['clustered'])
+
+    $("input[name='video']").val(video_name)
+    $("input[name='eps1']").val(config['eps1'])
+    $("input[name='eps2']").val(config['eps2'])
+    $("input[name='min_samples']").val(config['min_samples'])
+    $("input[name='line_ratio']").val(config['line_ratio']) 
+
+    crop_indexes = []
+    for(i=0; i<crops.length; i++){
+        crop_indexes[i] = 0
+    }
+
+    function showImage(cluster){
+        idx = crop_indexes[cluster]
+        
+        cid = crops[cluster][0]
+        frame = crops[cluster][1][idx]
+        rects = crops[cluster][2]
+
+        url = '/videos/' + video_folder + '/' + frame + '?rects=' + rects
+        $('#frames_'+cluster).attr("frame", frame)
+        $("#frames_"+cluster).attr("src", url);
+        $("#frames_"+cluster + "_text").text((idx+1) + "/" + crops[cluster][1].length) 
+        
+    }
+
+    for(i=0; i<crops.length; i++){
+        showImage(i)
+    }
+
+    function plusImages(cluster, n){
+        crop_indexes[cluster] += n
+        if(crop_indexes[cluster] > crops[cluster][1].length - 1){
+            crop_indexes[cluster] = 0
+        }
+        if(crop_indexes[cluster] < 0){
+            crop_indexes[cluster] = crops[cluster][1].length - 1
+        }
+
+        showImage(cluster);
+        
+    }
+    
+    $("button[name='submit']").click(function(){
+        paras = {}
+        paras['eps1'] = $("input[name='eps1']").val()
+        paras['eps2'] = $("input[name='eps2']").val()
+        paras['min_samples'] = $("input[name='min_samples']").val()
+        paras['line_ratio'] = $("input[name='line_ratio']").val()
+        paras['video_hash'] = video_hash
+        paras['video_name'] = video_name
+
+        $.ajax({
+                url: '/cropvideo',
+                type: 'POST',
+                contentType: "application/json", 
+                data: JSON.stringify(paras),
+                success: function(data){
+                    console.log(data)
+                    window.location.reload(true)
+                }
+            })
+    })
+
+     $("input[name='tobecropped']").each(function(){
+        $(this).change(function(){
+            res = {}
+            $("input[name='tobecropped']").each(function(){
+                cluster = $(this).val()
+                cid = crops[cluster][0]
+
+                res["cid_"+cid] = this.checked
+            })
+            res['video_name'] = video_name
+            res['video_hash'] = video_hash
+            
+            $.ajax({
+                url: '/setcrop',
+                type: 'POST',
+                contentType: "application/json", 
+                data: JSON.stringify(res),
+                success: function(data){
+                    console.log(data)
+                }
+            })
+        })
+    })
+
+    $("button[name='removeframe']").each(function(){
+       $(this).click(function(){
+            cluster = $(this).attr("cluster")
+            cid = crops[cluster][0]
+
+            idx = crop_indexes[cluster]
+            frame = crops[cluster][1][idx]
+            console.log(cluster + '/' + cid + '/' + idx + '/' + frame)
+
+            $.ajax({
+                url: '/rmframe',
+                type: 'post',
+                contentType: "application/json", 
+                data: JSON.stringify({'video_name': video_name, 'video_hash': video_hash, 'cid': cid, 'frame': frame}),
+                success: function(data){
+                    crops[cluster][1].splice(idx, 1)
+                    plusImages(cluster, 0)
+                }
+            })
+       })
+    })
+
+    $("button[name='updaterect']").each(function(){
+        $(this).click(function(){
+            cluster = $(this).attr("cluster")
+            cid = crops[cluster][0]
+            console.log(cluster)
+
+            x1 = []
+            $("input[name='x1_"+cluster+"']").each(function(){ x1.push($(this).val());})
+            y1 = []
+            $("input[name='y1_"+cluster+"']").each(function(){ y1.push($(this).val());})
+            x2 = []
+            $("input[name='x2_"+cluster+"']").each(function(){ x2.push($(this).val());})
+            y2 = []
+            $("input[name='y2_"+cluster+"']").each(function(){ y2.push($(this).val());})
+            
+            rects = []
+            for(i=0; i<x1.length; i++){
+                rects.push([x1[i], y1[i], x2[i], y2[i]])
+            }
+
+            $.ajax({
+                url: '/updaterects',
+                type: 'post',
+                contentType: "application/json", 
+                data: JSON.stringify({'video_name': video_name, 'video_hash': video_hash, 'cid': cid, 'rects': rects}),
+                success: function(data){
+                    for(i=0; i<crops[cluster][2].length; i++){
+                        crops[cluster][2][i][0] = rects[i][0]
+                        crops[cluster][2][i][1] = rects[i][1]
+                        crops[cluster][2][i][2] = rects[i][2]
+                        crops[cluster][2][i][3] = rects[i][3]
+
+                        plusImages(cluster, 0)
+                    }
+                }
+            })   
+        })
+    })
+
+</script>
+

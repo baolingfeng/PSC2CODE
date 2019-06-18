@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="{{ url_for('static',filename='jquery.js') }}"></script>
+<script src="{{ url_for('static',filename='util.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ url_for('static',filename='questionnaire.js') }}"></script>
+
+<style>
+table.ratetable td {
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+</style>
+
+<title>Rating</title>
+
+<script>
+var recordId = {{record_id}};
+</script>
+</head>
+<body>
+
+<div style="margin:auto; width:70%;">
+    {% if group == 1%}
+    <div class="qdiv w3-padding-jumbo w3-light-grey">
+            <p class="w3-large" style="margin-bottom:20px;">Please rank each function of the enhancing programming videos (score: 1-5, 5 is the best)?
+            <span name="rate_warning" class="hidden-text warning-text" style="padding-left:20px">require*</span>
+            </p>
+            <table class="ratetable">
+            <tr>
+            <td><label class="w3-large">Code Timeline </label></td>
+            <td>
+                <input name="r1" id="1" value="1" type="radio"> 1
+                <input name="r1" id="1" value="2" type="radio"> 2
+                <input name="r1" id="1" value="3" type="radio"> 3
+                <input name="r1" id="1" value="4" type="radio"> 4
+                <input name="r1" id="1" value="5" type="radio"> 5
+            </td>
+            </tr>
+            <tr>
+            <td><label class="w3-large">Search Code Element</label></td>
+            <td>
+            <input name="r2" id="2" value="1" type="radio"> 1
+            <input name="r2" id="2" value="2" type="radio"> 2
+            <input name="r2" id="2" value="3" type="radio"> 3
+            <input name="r2" id="2" value="4" type="radio"> 4
+            <input name="r2" id="2" value="5" type="radio"> 5
+            </td>
+            </tr>
+            <tr>
+            <td><label class="w3-large">Code Content Sync</label></td>
+            <td>
+            <input name="r3" id="2" value="1" type="radio"> 1
+            <input name="r3" id="2" value="2" type="radio"> 2
+            <input name="r3" id="2" value="3" type="radio"> 3
+            <input name="r3" id="2" value="4" type="radio"> 4
+            <input name="r3" id="2" value="5" type="radio"> 5
+            </td>
+            </tr>
+            <tr>
+            <td><label class="w3-large">Overall</label></td>
+            <td>
+            <input name="r4" id="2" value="1" type="radio"> 1
+            <input name="r4" id="2" value="2" type="radio"> 2
+            <input name="r4" id="2" value="3" type="radio"> 3
+            <input name="r4" id="2" value="4" type="radio"> 4
+            <input name="r4" id="2" value="5" type="radio"> 5
+            </td>
+            </tr>
+            </table>
+        </div>
+    {% else %}
+	<div class="qdiv w3-padding-jumbo w3-light-grey">
+		<p class="w3-large" style="margin-bottom:20px;">Please rank the usefulness of a regular video player for learning the knowledge from programming videos（score: 1-5, 5 is the best）？
+		<span name="rate_warning" class="hidden-text warning-text" style="padding-left:20px">require*</span>
+		</p>
+		<input name="r1" id="1" value="1" type="radio"> 1
+		<input name="r1" id="1" value="2" type="radio"> 2
+		<input name="r1" id="1" value="3" type="radio"> 3
+		<input name="r1" id="1" value="4" type="radio"> 4
+		<input name="r1" id="1" value="5" type="radio"> 5
+	</div>
+    {% endif %}
+    
+	<div class="qdiv w3-padding-jumbo w3-light-grey">
+		<label class="w3-large">Do you have any suggestions to improve the interactions with programming video?</label>
+		<br/>
+		<textarea name="comment" rows="10" cols="70"></textarea>
+	</div>
+	
+	<div class="w3-padding-jumbo w3-light-grey">
+		<input id="controlBtn" class="w3-btn w3-orange w3-large w3-text-white" value=" submit " type="button" onclick="submitRate({{record_id}}, {{group}})">
+    </div>
+</div>
+</body>
+</html>

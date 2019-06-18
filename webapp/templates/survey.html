@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User Study for Enhancing Programming Videos</title>
+</head>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="{{ url_for('static',filename='jquery.js') }}"></script>
+<script src="{{ url_for('static',filename='util.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{{ url_for('static',filename='questionnaire.js') }}"></script>
+
+{% set video_url = 'video?v='+video_hash + '&group=' + group + '&youtube=' + use_youtube %}
+
+{% set questionNumber = 5 %}
+
+<body>
+    <div style="margin:auto; width:70%;">
+        <form role="form" name="quizform" action="quiztest.asp?qtest=HTML" method="post">
+                <div class="w3-padding-jumbo w3-light-grey">
+                    <p>In this task, you need to watch the following programming videos:</p>
+                    <!-- <p><a href="{{video_url}}">{{video_name}}</a></p> -->
+                    <p><u>{{video_name}}</u></p>
+                    <p>During watching the video, you need to answer several questions in this page</p>
+
+                    <p><label class="w3-small italic-text">
+                    If you have any questions, please contact Dr. Lingfeng Bao via email: lingfengbao@zju.edu.cn
+                    </label></p>
+                </div>  
+                
+                <div class="w3-padding-jumbo w3-light-grey hidden-text">
+                        <h2 style="margin-bottom:10px;">
+                        <span class="italic-text"> {{group}} </span>
+                        <input name="group" value="{{group}}" size="25" type="hidden">
+                        </h2>
+                </div>
+
+                <div class="w3-padding-jumbo w3-light-grey">
+                        <label class="w3c-large" style="color:red; font-style: italic;">
+                        Note:
+                        <p><label class="w3-large">Please do not refresh this page before submission</label></p>
+                        <input name="single-choice" id="1" value="1" type="radio" checked disabled> Single Choice
+                        <input name="single-choice" id="1" value="1" type="checkbox" checked disabled> Multiple Choices
+                        </label>
+                </div>
+                
+
+                <div class="w3-padding-jumbo w3-light-grey">
+                        <input id="controlBtn" name="controlBtn" class="w3-btn w3-orange w3-large w3-text-white" value=" Start to Watching Video & Answer Questions " type="button" onclick="startAnswer({{questionNumber}}, this.value, '{{video_hash}}', '{{group}}')">
+                        <span id="timecounter_span" class="w3-large hidden-text" style="padding-left:50px; display: none;">Duration：<label id="timecounter"></label></span>
+                        <input name="starttime" value="" type="hidden">
+                </div>
+                
+                {% if video_hash == 'ck39jt04Qpk' %}
+                    {% include 'q1.html' %}
+                {% elif video_hash == 'GnLtvmeGAWA' %}
+                    {% include 'q2.html' %}
+                {% elif video_hash == 'OF3vBYWikYs' %}
+                    {% include 'q3.html' %}
+                {% endif %}
+        </form>
+    </div>
+</body>
+
+<script>
+var questionNumber = 5;
+var use_youtube = {{use_youtube}};
+
+$(document).ready(function(){
+    var lastQestion = -1;
+    for(i=1; i<=questionNumber; i++)
+	{
+		$("input[name=q"+i+"]").prop('disabled', true);
+		
+		var type = $("input[name=q"+i+"]").prop('type');
+		if(type == "checkbox" || type == "radio")
+		{
+			$("input[name=q"+i+"]").change(function() {
+				var t = createDateAsUTC(new Date()).toISOString().slice(0, 19); 
+				
+				if(lastQestion != this.name)
+				{
+					var qt = $("input[name="+this.name+"_time]").val();
+					if(qt != "") qt = qt + ",";
+					$("input[name="+this.name+"_time]").val(qt + t);
+				}
+				else
+				{
+					var qt = $("input[name="+this.name+"_time]").val();
+					var arr = qt.split(',')
+					arr[arr.length-1] = t;
+					$("input[name="+this.name+"_time]").val(arr.join(','));
+				}
+				
+				lastQestion = this.name;
+			});
+		}
+		else if(type == "text" || type == "textarea")
+		{
+			$("input[name=q"+i+"]").focus(function(){
+				var t = createDateAsUTC(new Date()).toISOString().slice(0, 19); 
+				if(lastQestion != this.name)
+				{
+					var qt = $("input[name="+this.name+"_time]").val();
+					if(qt != "") qt = qt + ",";
+					$("input[name="+this.name+"_time]").val(qt + t);
+				}
+				else
+				{
+					var qt = $("input[name="+this.name+"_time]").val();
+					var arr = qt.split(',')
+					arr[arr.length-1] = t;
+					$("input[name="+this.name+"_time]").val(arr.join(','));
+				}
+				
+				lastQestion = this.name;
+			});
+		}
+    }
+});
+</script>
+</html>

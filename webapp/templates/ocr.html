@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<title>OCR Content</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='codemirror.css') }}">
+
+<script src="{{ url_for('static',filename='jquery.js') }}"></script>
+<script src="{{ url_for('static',filename='util.js') }}"></script>
+<script src="{{ url_for('static',filename='codemirror.js') }}"></script>
+<script src="{{ url_for('static',filename='clike.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<div class="w3-xlarge bold-text header">
+        <span id="video_name">{{video_info['video_name']}}</span>
+</div> 
+
+
+<div id="ocr">
+    <ul>
+        {% for frame in video_info["frames"] %}
+        <li><a href="#frame-{{frame[0]}}">{{frame[0]}}</a></li>
+        {% endfor %}
+    </ul>
+    {% for frame in video_info["frames"] %}
+        <div id="frame-{{frame[0]}}">
+            <textarea id="file-{{frame[0]}}-text"></textarea>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+var video_info = {{ video_info|tojson }};
+var video_hash = video_info['video_hash']
+var video_name = video_info['video_name']
+var frames = video_info['frames']
+
+
+editors = {}
+for(i=0; i<frames.length; i++){
+    frame = frames[i][0]
+    content = frames[i][1]
+
+    editor = CodeMirror.fromTextArea(document.getElementById("file-"+frame+"-text"), {
+               lineNumbers: true,
+                matchBrackets: true,
+                readOnly: true,
+                mode: "text/x-java"
+    });
+    editor.setSize("100%", "600px")
+    editor.setValue(content)
+
+    editors[frame] = editor
+}
+
+$( "#ocr" ).tabs({
+    beforeActivate: function (event, ui) {
+        tab_id = ui.newPanel.attr('id')
+        frame = tab_id.substring(6)
+        console.log(frame)
+        
+    }
+}).addClass( "ui-tabs-vertical ui-helper-clearfix" );
+
+
+</script>

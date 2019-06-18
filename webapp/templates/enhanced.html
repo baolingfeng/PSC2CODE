@@ -1,0 +1,139 @@
+﻿<!doctype html>
+<title>Code Motion</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/diff2html.min.css') }}"> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='codemirror.css') }}">
+
+<script src="{{ url_for('static',filename='jquery.js') }}"></script>
+<script src="{{ url_for('static',filename='util.js') }}"></script>
+<script src="{{ url_for('static',filename='codemirror.js') }}"></script>
+<script src="{{ url_for('static',filename='clike.js') }}"></script>
+<script src="{{ url_for('static',filename='jquery-ui.js') }}"></script>
+<script src="{{ url_for('static',filename='jquery.popupoverlay.js') }}"></script>
+<script src="{{ url_for('static',filename='jquery.ui.position.js') }}"></script>
+
+
+<div class="w3-xlarge bold-text header">
+    <span id="video_name">{{video_info['video_name']}}</span>
+</div> 
+
+<div class="youtube">
+    {% if video_info['use_youtube'] == 1 %}
+        <div id="player"></div>
+    {% else %}
+        <video id ="player"  controls>
+			<source src="{{ url_for('static',filename='')}}{{video_info['video_hash']}}.mp4" type="video/mp4">
+		   	Your browser does not support the video tag.
+		</video>
+    {% endif %}
+    {% if video_info['group'] == 1 %}
+    <div class="info">
+            <input type="text" name="query" style="width:50%;height:16px" placeholder="Please input your query"/>
+            <button class="w3-btn" name="btnSearch">Search</button>
+    </div>
+    {% endif %}
+</div>
+
+<div id="search" class="mydialog">
+	<div id="search_result"></div>
+</div>
+
+{% if video_info['group'] == 1 %}
+{% if video_info.ocr %}
+<div class="rightbar">
+<div class="navigation" id="navigation">
+    <ul>
+        <li><a href="#files">Files</a></li>
+        <li><a href="#actions">Actions</a></li>
+    </ul>
+    <div id="files">
+            <div id="files-2">
+                    <ul>
+                        {% set file_num = video_info["ocr"]["file_names"].items()|length %}
+                        {% for cluster in range(file_num) %}
+                        {# for cluster, filename in video_info["ocr"]["file_names"].items() #}
+                            {% set filename = video_info["ocr"]["file_names"][cluster|string] %}
+                            {% if filename.startswith("Unknown File") %}
+                                <li><a href="#tabs-file-{{cluster}}">{{filename}}</a></li>
+                            {% else %}
+                            <li><a href="#tabs-file-{{cluster}}">{{filename}}.java</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {# for cluster, filename in video_info["ocr"]["file_names"].items() #}
+                    {% for cluster in range(file_num) %}
+                        <div id="tabs-file-{{cluster}}" cluster="{{cluster}}">
+                            <div id="file-{{cluster}}"><textarea id="file-{{cluster}}-text"></textarea></div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+    <div id="actions">
+        <table class="actiontable">
+        <tr>
+            <th>Timestamp</th><th>Action</th><th>Detail</th>
+        </tr>
+        {% for action in video_info["ocr"]["actions"] %}  
+            {% set file1 = video_info["ocr"]["file_names"][action["cluster1"]|string] %}  
+            {% set file2 = video_info["ocr"]["file_names"][action["cluster2"]|string] %}  
+        <tr>
+            <td>
+                <span class="timestamp" frame1="{{action['frame1']}}", frame2="{{action['frame2']}}">[{{action['display_time']}}]</span>
+            </td>
+            {% if action['type'] == "edit" %}
+                {% set list1 = action['delta'].split('\n') %}
+            <td>Edit</td>
+            <td>
+                <button class="action"><label class="actionfile">{{file1}}</label> with {{action['deleted']}} deletions and {{action['inserted']}} insertions</button>  
+                <div class="diff">
+                    {% for line in list1 %}
+                        {% if line.startswith("+") %}
+                            <p class="d2h-lines-added">{{line}}</p>
+                        {% else %}
+                            <p class="d2h-lines-deleted">{{line}}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+            {% else %}
+            <td>Switch</td>
+            <td>
+                <button class="action" frame1="{{action['frame1']}}", frame2="{{action['frame2']}}">
+                        <label class="actionfile">{{file1}}</label> ==> <label class="actionfile">{{file2}}</label>
+                </button> 
+            </td>
+            {% endif %}   
+        {% endfor %}
+        </table> 
+    </div>
+</div>
+</div>
+{% endif %}
+{% endif %}
+
+<script>
+    var video_info = {{ video_info|tojson }};
+
+    var group = video_info['group'];
+
+    if(group==1){
+        $('#search').popup('hide');
+
+        $("button[name='btnSearch']").click(function(){
+            var query = $("input[name='query']").val();
+            if(query.trim() == ""){
+                return;
+            }
+
+            search(query);
+        });
+    }
+</script>
+
+{% if video_info['use_youtube'] %}
+    <script src="{{ url_for('static',filename='forYoutube.js') }}"></script>
+{% else %}
+    <script src="{{ url_for('static',filename='forUserStudy.js') }}"></script>
+{% endif %}

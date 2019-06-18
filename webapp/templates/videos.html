@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<title>Video List</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+<style>
+    .customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    .customers td, .customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    .customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    .customers tr:hover {background-color: #ddd;}
+    
+    .customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<div class="w3-xlarge bold-text header">Video List</div> 
+
+{% for playlist in playlists %}
+    <button class="collapsible">
+        <a href="https://www.youtube.com/playlist?list={{playlist['playlist_id']}}" target="_blank">
+            {% if playlist['playlist_title'] is none %}
+                Playlist {{loop.index0}}
+            {% else %}
+                {{playlist['playlist_title']}}
+            {% endif %}
+        </a>
+    </button>
+    <div class="content">
+            <table class="customers">
+                    {% for video in playlist['videos'] %}
+                    <tr>
+                        <td><a href='/video?v={{video.0}}' target="_blank">{{video.1}}</a></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+    </div>
+{% endfor %}
+
+{#
+<table class="customers">
+<tr><td>Video Name</td><td>Predicted</td><td>Cropped</td></tr>
+{% for video in videos %}
+<tr>
+    <td><a href='videos/{{video.0}}'>{{video.0}}</a></td>
+    <td>
+        {% if video.1 %}
+            ## <a href='videos/predict/{{video.0}}'>View Predicted Frames</a>
+            <a href='videos/crop?video={{video.0}}' target="_blank" >View Crop Frames</a>
+        {% else %}
+            <a href=''>Predicted</a>
+        {% endif %}
+
+    </td>
+    <td>{{video.2}}</td>
+</tr>
+{% endfor %}
+
+</table>
+#}
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+</script>

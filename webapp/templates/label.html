@@ -1,0 +1,99 @@
+﻿<!doctype html>
+<title>Label Frames</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+<script type="text/javascript">
+var csrftoken = $('meta[name=csrf-token]').attr('content')
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        }
+    }
+})
+</script>
+
+<div class="w3-xlarge bold-text header"><span id="video_name">{{video_info['video_name']}}</span></div> 
+
+<div class="slideshow-container">
+    <div id="frames_text">1 / {{video_info['frames']|length}}</div>
+    <div class="mySlides">
+        <img id="frames" src="" style="width:100%">
+    </div>
+
+    <a class="prev" onclick="plusSlides('frames', {{video_info['frames']}}, -1)">&#10094;</a>
+    <a class="next" onclick="plusSlides('frames', {{video_info['frames']}}, 1)">&#10095;</a>
+
+    <input type="radio" name="code" value="1"> IDE Text Editor with Code (Only Java) <br/>
+    <input type="radio" name="code" value="2"> IDE Text Editor with Other Text (e.g., HTML, text) <br/>
+    <input type="radio" name="code" value="3"> IDE Text Editor with Popup Window (e.g., code completion popup) <br/>
+    <input type="radio" name="code" value="4"> IDE without TextEditor or None IDE  <br/>
+
+    <button id="submitBtn" class="w3-btn">Submit</button>
+</div>
+
+<script>
+    var video_info = {{video_info|tojson}}
+    var video_name = video_info['video_name']
+    var video_hash = video_info['video_hash']
+    var video_folder = video_name + '_' + video_hash
+    var frames = video_info['frames']
+
+    var frameIndex = 0
+    
+    var labels = {} 
+
+    showSlides("frames", frames, frameIndex);
+
+    // Next/previous controls
+    function plusSlides(image, slides, n) {
+        labels[frames[frameIndex]] = $("input[name='code']:checked").val();
+
+        frameIndex += n
+        if(frameIndex > frames.length-1){
+            frameIndex = 0
+        }
+        if(frameIndex < 0){
+            frameIndex = frames.length-1
+        }
+
+        if(frames[frameIndex] in labels){
+            value = labels[frames[frameIndex]]
+            $("input[name='code']").filter('[value='+ value + ']').prop('checked', true);
+        }
+        // console.log(k)
+        showSlides(image, slides, frameIndex);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(image, slides, n);
+    }
+
+    function showSlides(image, slides, n) {
+
+
+        $('#'+image).attr("src", '/videos/' + video_folder + "/" + slides[n]);
+        $('#'+image+"_text").text((n+1) + "/" + slides.length) 
+    }
+
+    $('#submitBtn').click(function(){
+        $.ajax({
+            contentType: 'application/json',
+            type: 'POST',
+            url: "/labelvideo",
+            data: JSON.stringify({'video_name': video_name, 'video_hash': video_hash, 'labels': labels}),
+            success: function(result){
+                // console.log(result);
+                window.location.href = "/videos";
+            }
+        })
+    });
+
+</script>

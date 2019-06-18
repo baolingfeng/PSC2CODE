@@ -1,0 +1,119 @@
+﻿<!doctype html>
+<title>Label Image</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+</style>
+
+<script type="text/javascript">
+var csrftoken = $('meta[name=csrf-token]').attr('content')
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        }
+    }
+})
+
+var video = '{{ name }}';
+var frames = {{ frames }};
+
+console.log(frames);
+
+$( document ).ready(function() {
+    cur_frame = 0
+    var labels = {} 
+    
+    function nextFrame(){
+        if(cur_frame == frames.length - 1){
+                alert("last image!!!")
+                return; 
+        }
+        labels[frames[cur_frame]] = $("input[name='code']:checked").val();
+
+        cur_frame += 1;
+        $('#image').attr("src", video + '/' + frames[cur_frame]);
+        
+        if(frames[cur_frame] in labels){
+            value = labels[frames[cur_frame]]
+            $("input[name='code']").filter('[value='+ value + ']').prop('checked', true);
+        }
+        
+    }
+
+    $('#nextBtn').click(function(){
+        // console.log('next frame' + frames[cur_frame+1])
+        nextFrame()
+    })
+
+    $('#backBtn').click(function(){
+        // console.log('previous frame' + frames[cur_frame+1])
+        if(cur_frame == 0 ){
+            alert("first image!!!")
+            return; 
+        }
+
+        cur_frame -= 1;
+        $('#image').attr("src", video + '/' + frames[cur_frame]);
+        
+        if(frames[cur_frame] in labels){
+            value = labels[frames[cur_frame]]
+            $("input[name='code']").filter('[value='+ value + ']').prop('checked', true);
+        }
+    })
+
+    $('input:radio[name="code"]').change(function(){
+        if ($(this).is(':checked')) {
+            console.log($(this).val());
+            
+        }
+    });
+
+    $('#image').click(function(){
+        nextFrame();
+    })
+
+    $('#submitBtn').click(function(){
+        console.log({'video': video, 'label': labels});
+        $.ajax({
+            contentType: 'application/json',
+            type: 'POST',
+            url: "/submit",
+            data: JSON.stringify({'video': video, 'labels': labels}),
+            success: function(result){
+                // console.log(result);
+                window.location.href = "/videos";
+            }
+        })
+    });
+});
+</script>
+
+<h1>{{ name }}<h1>
+
+<img id="image" src="/videos/{{name}}/{{frames[0]}}"></img> <br/>
+
+<input type="radio" name="code" value="1"> IDE Text Editor with Code (Only Java) <br/>
+<input type="radio" name="code" value="2"> IDE Text Editor with Other Text (e.g., HTML, text) <br/>
+<input type="radio" name="code" value="3"> IDE Text Editor with Popup Window (e.g., code completion popup) <br/>
+<input type="radio" name="code" value="4"> IDE without TextEditor or None IDE  <br/>
+
+
+<button id="backBtn" class="button">Back</button>
+<button id="nextBtn" class="button">Next</button> <br/>
+
+<br/><br/>
+<button id="submitBtn" class="button">Submit</button>

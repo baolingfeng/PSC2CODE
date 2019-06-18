@@ -1,0 +1,23 @@
+﻿<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel= "stylesheet" href= "{{ url_for('static',filename='codemirror.css') }}">
+
+<title>Video List</title>
+
+<!-- <script src="{{ url_for('static',filename='jquery.js') }}"></script> -->
+<!-- <script src="{{ url_for('static',filename='util.js') }}"></script> -->
+<script src="{{ url_for('static',filename='codemirror.js') }}"></script>
+<script src="{{ url_for('static',filename='clike.js') }}"></script>
+
+
+<body>
+
+</body>
+
+<script>
+    var myCodeMirror = CodeMirror(document.body, {
+        value: "public class tuna{\n\tprivate int i = ;\n}\n",
+        mode:  "text/x-java"
+    });
+
+</script>

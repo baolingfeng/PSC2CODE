@@ -1,0 +1,97 @@
+﻿<!doctype html>
+<title>User Study for Enhancing Programming Videos</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<style>
+        html,body{ height: 100%;}
+        body{position: relative; min-height: 550px;}
+        #header {
+            background-color:black;
+            color:white;
+            text-align:center;
+            padding:5px;
+        }
+        #videolist {
+            height: 75%;
+            width: 800px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+        #footer {
+            background-color:black;
+            color:white;
+            text-align:center;
+            position: fix; 
+            bottom: 0; 
+            left: 0;
+            width: 100%;
+            margin-bottom:0px;
+        }
+        table.vtable{
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table.vtable td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        </style> 
+
+<body>
+        <div id="header">
+                <h1>User Study for Enhancing Programming Videos</h1>
+                </div>
+                
+                <div id="videolist">
+                    <div>
+                        <span style="font-size: 26px; font-weight: bold;">Video List</span>
+                    </div>
+                    <br/>
+                    <table class="vtable">
+                    <tr>
+                        <th>Index</th>
+                        <th>Title</th>
+                        <th style="text-align: center;">Questionnaire</th>
+                    </tr>
+                    <tr>
+                            <td>1</td>
+                            <td><a href="https://www.youtube.com/watch?v=ck39jt04Qpk">3 - Canvas - New Beginner 2D Game Programming</a></td>
+                            <td style="text-align: center;">
+                                <a href="survey?v=ck39jt04Qpk&group={{group}}&youtube={{use_youtube}}" target="_blank">
+                                Start
+                                </a>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>2</td>
+                            <td><a href="https://www.youtube.com/watch?v=GnLtvmeGAWA">Java Tutorial For Beginners 26 - Polymorphism in Java</a></td>
+                            <td style="text-align: center;">
+                                <a href="survey?v=GnLtvmeGAWA&group={{group}}&youtube={{use_youtube}}" target="_blank">
+                                Start
+                                </a>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>3</td>
+                            <td><a href="https://www.youtube.com/watch?v=OF3vBYWikYs">Java Tutorial for Beginners - 31 - Getters and Setters</a></td>
+                            <td style="text-align: center;">
+                                <a href="survey?v=OF3vBYWikYs&group={{group}}&youtube={{use_youtube}}" target="_blank">
+                                Start
+                                </a>
+                            </td>
+                    </tr>
+                    
+                    </table>
+                    <br/>
+                    
+                </div>
+                
+                
+                <div id="footer">Copyright @ lingfengbao@zju.edu.cn</div>
+
+</body>
+

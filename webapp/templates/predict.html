@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<title>Validated Frames</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+<script type="text/javascript">
+var csrftoken = $('meta[name=csrf-token]').attr('content')
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken)
+        }
+    }
+})
+</script>
+
+<div class="w3-xlarge bold-text header"><span id="video_name">{{video_info['video_name']}}</span></div> 
+
+<div class="info">
+    There are  <label class="w3-medium bold-text">{{video_info['valid']|length+video_info['invalid']|length}}</label> frames in total, including <label class="w3-medium bold-text">{{video_info['valid']|length}}</label> valid frames and
+    <label class="w3-medium bold-text"> {{video_info['invalid']|length}}</label> invalid frames.<br/>
+    Noted that invalid frames could be those frames with partial (popup window, context menu, etc.) or no code in IDEs
+</div>
+{% set video_folder = video_info['video_name'] + '_' + video_info['video_hash'] %}
+
+<button class="collapsible"><span>Valid Frames ({{video_info['valid']|length}})</span></button>
+<div class="content">
+    <div class="slideshow-container">
+        <div id="valid_text">1 / {{video_info['valid']|length}}</div>
+        <div class="mySlides">
+            <img id="valid" src="/videos/{{video_folder}}/{{video_info['valid'][0]}}" style="width:100%">
+        </div>
+        
+        <a class="prev" onclick="plusSlides('valid', {{video_info['valid']}}, -1)">&#10094;</a>
+        <a class="next" onclick="plusSlides('valid', {{video_info['valid']}}, 1)">&#10095;</a>
+
+        <!-- <button id="mark_invalid" class="button">Mark as Invalid</button>
+        <button id="crop" class="button">Crop</button> -->
+        <div class="info">
+            <button class="w3-btn" name="FPBtn">Confirm as False Positive</button>
+            <input class="w3-btn" type="checkbox" name="FP"> <span class="w3-check">FP</span>
+        </div>
+    </div>
+
+</div>
+
+<button class="collapsible"><span>Invalid Frames ({{video_info['invalid']|length}})</span></button>
+<div class="content">
+    <div class="slideshow-container">
+            <div id="invalid_text">1 / {{video_info['invalid']|length}}</div>
+            <div class="mySlides">
+                <img id="invalid" src="/videos/{{video_folder}}/{{video_info['invalid'][0]}}" style="width:100%">
+            </div>
+        
+            <a class="prev" onclick="plusSlides('invalid', {{video_info['invalid']}}, -1)">&#10094;</a>
+            <a class="next" onclick="plusSlides('invalid', {{video_info['invalid']}}, 1)">&#10095;</a>
+            <div class="info">
+                <button class="w3-btn" name="FNBtn">Confirm as False Negative</button>
+                <input class="w3-btn" type="checkbox" name="FN"> <span class="w3-check">FN</span>
+            </div>
+    </div>
+</div>
+
+<script>
+    $('.collapsible').each(function(idx){
+        $(this).on("click", function(){
+            console.log("click")
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+
+        if(idx == 0){
+            $(this).trigger('click')
+        }     
+    })
+
+    var video_info = {{video_info|tojson}}
+    var valid_frames = video_info['valid']
+    var invalid_frames = video_info['invalid']
+    var video_name = video_info['video_name']
+    var video_hash = video_info['video_hash']
+    var predict_info = video_info['predict']
+
+    var video_folder = video_name + '_' + video_hash
+
+    var validIndex = 0;
+    var invalidIndex = 0;
+    showSlides("valid", valid_frames, validIndex);
+
+    // Next/previous controls
+    function plusSlides(image, slides, n) {
+        if(image == "valid"){
+            validIndex += n
+            if(validIndex > valid_frames.length-1){
+                validIndex = 0
+            }
+            if(validIndex < 0){
+                validIndex = valid_frames.length-1
+            }
+            k = validIndex
+
+        }else{
+            invalidIndex += n
+            if(invalidIndex > invalid_frames.length-1){
+                invalidIndex = 0
+            }
+            if(invalidIndex < 0){
+                invalidIndex = invalid_frames.length-1
+            }
+            k = invalidIndex
+        }
+
+        // console.log(k)
+        showSlides(image, slides, k);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(image, slides, n);
+    }
+
+    function showSlides(image, slides, n) {
+        if (n > slides.length) {slideIndex = 1} 
+        
+        if (n < 1) {slideIndex = slides.length}
+        
+        frame = slides[n]
+        if(predict_info[frame]['label'] != predict_info[frame]['predict']){
+            if(image == 'valid'){
+                $("input[name='FP']").each(function(){
+                    this.checked = true
+                })
+            }
+            else{
+                $("input[name='FN']").each(function(){
+                    this.checked = true
+                })
+            }
+        }
+        else{
+            if(image == 'valid'){
+                $("input[name='FP']").each(function(){
+                    this.checked = false
+                })
+            }
+            else{
+                $("input[name='FN']").each(function(){
+                    this.checked = false
+                })
+            }
+        }
+   
+        $('#'+image).attr("src", '/videos/' + video_folder + "/" + slides[n]);
+        $('#'+image+"_text").text((n+1) + "/" + slides.length) 
+    }
+
+     $('#crop').click(function(){
+        $('#form').submit()
+     })
+
+     $("button[name='FPBtn']").each(function(){
+       $(this).click(function(){
+            console.log("Mark as FP:" + valid_frames[validIndex]);
+            $.ajax({
+                url: '/fpframe',
+                type: 'post',
+                contentType: "application/json", 
+                data: JSON.stringify({'video_name': video_name, 'video_hash': video_hash, 'frame': valid_frames[validIndex]}),
+                success: function(data){
+                    predict_info[valid_frames[validIndex]]['label'] = 'invalid'
+                    $("input[name='FP']").each(function(){
+                        this.checked = true
+                    })
+                    console.log(data)
+                }
+            })
+       })
+    })
+
+    $("button[name='FNBtn']").each(function(){
+       $(this).click(function(){
+            console.log("Mark as FN:" + invalid_frames[invalidIndex]);
+            $.ajax({
+                url: '/fnframe',
+                type: 'post',
+                contentType: "application/json", 
+                data: JSON.stringify({'video_name': video_name, 'video_hash': video_hash, 'frame': invalid_frames[invalidIndex]}),
+                success: function(data){
+                    predict_info[invalid_frames[invalidIndex]]['label'] = 'valid'
+                    $("input[name='FN']").each(function(){
+                        this.checked = true
+                    })
+                    console.log(data)
+                }
+            })
+       })
+    })
+</script>
