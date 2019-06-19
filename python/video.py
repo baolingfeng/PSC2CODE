@@ -383,22 +383,12 @@ def batch():
     from video_tagging.predict import predict_video, load_model
 
     db = DBImpl({'url': os.path.join(playlists_dir, 'videos.db')})
-    # lists = ['PLnVYEpTNGNtXU7-70Zsr4gvayqHg3L5ap', 'PLnVYEpTNGNtWpqtjh3-o9UqmlSOgh7d9a', 'PLnVYEpTNGNtVVLAa3GH_jPLoNLFBjYkHz', 'PLnVYEpTNGNtU6TSAVSv_Kw7pyBbYrTFQV', 'PLsyeobzWxl7pFZoGT1NbZJpywedeyzyaf']
-    # lists = ['PLah6faXAgguMnTBs3JnEJY0shAc18XYQZ', 'PLqq-6Pq4lTTa9YGfyhyW2CqdtW9RtY-I3', 'PLqq-6Pq4lTTZh5U8RbdXq0WaYvZBz2rbn', 'PLBB24CFB073F1048E']
-    lists = ['PLF03C6B2C0B292A1E']
     default_config = {'eps1': 3, 'eps2':2, 'min_samples':2, 'line_ratio': 0.7}
-    
-    # sql = "select hash, title, playlist from videos where playlist in (" + ','.join(['"'+l+'"' for l in lists]) + ")"
-    # print sql
-    # videos = db.querymany(sql)
 
     sql = 'select id, title from playlists where used = 1'
     sql2 = 'select hash, title from videos where playlist = ? and used = 1 order by list_order'
     res = db.querymany(sql)
     for list_id, title in res:
-        if list_id not in lists:
-            continue
-
         list_folder = os.path.join(video_dir, list_id)
         if not os.path.exists(list_folder):
             continue
@@ -408,17 +398,12 @@ def batch():
         for video_hash, video_title in videos:
             video_title = video_title.strip()
             video_folder = video_title + '_' + video_hash
-            # if os.path.exists(os.path.join(lines_dir, video_folder)):
-            #     continue
+
             
             video_path = os.path.join(video_dir, list_id, video_folder+".mp4")
             
             if not os.path.exists(os.path.join(images_dir, video_folder)):
                 continue
-                # os.mkdir(os.path.join(images_dir, video_folder))
-                # preprocess.extract_frames(video_path, os.path.join(images_dir, video_folder))
-                # preprocess.diff_frames(os.path.join(images_dir, video_folder))
-
             if not os.path.exists(os.path.join(images_dir, video_folder, 'predict.txt')):
                 predict_video(video_folder, valid_model)
             
@@ -433,29 +418,13 @@ def batch():
                 os.mkdir(os.path.join(lines_dir, video_folder))
 
             
-            # cvideo.cluster_lines()
-            # cvideo.adjust_lines()
-            # cvideo.detect_rects()
+            cvideo.cluster_lines()
+            cvideo.adjust_lines()
+            cvideo.detect_rects()
 
             print video_title, video_hash
             cvideo.crop_rects()
 
-            # break
-        
-        # break
-    
-def main():
-    # video = "Intermediate Java Tutorial - 2 - Some More String Methods"
-    # video = "Java Programming Tutorial - 5 - Variables"
-    # video = "Java Tutorial For Beginners 4 - Variables and Types in Java"
-    video = "Intermediate Java Tutorial - 18 - Implementing a Generic Method"
-    # video = "Java Programming Tutorial - 6 - Getting User Input"
-    cvideo = CVideo(video)
-    # cvideo.cluster_images()
-    cvideo.cluster_lines(eps1=2, eps2=2, min_samples=2)
-    # cvideo.adjust_lines()
-    cvideo.crop_rects()
 
 if __name__ == '__main__':
-    # main()
     batch()

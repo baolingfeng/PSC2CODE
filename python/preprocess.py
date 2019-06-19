@@ -49,7 +49,7 @@ def diff_frames(frame_folder, thre=0.05, metric="NRMSE"):
             else:
                 sim = skimage.measure.compare_nrmse(pre_img, img_gray)
 
-             if sim > thre:
+            if sim > thre:
                 pre_img = img_gray
                 filter_frames.append(frame)
             else:

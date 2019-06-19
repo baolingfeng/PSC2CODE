@@ -2,7 +2,7 @@
 
 #This file contains the working directory including the location of videos, images, and other outputs
 
-working_dir = "/home/blf/Data/VideoAnalytics"
+working_dir = "/media/blf/MYWD/TOSEM-Video"
 
 code_dir = os.path.join(working_dir, "python")
 video_dir = os.path.join(working_dir, "Videos")
