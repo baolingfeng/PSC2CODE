@@ -1,0 +1,2900 @@
+{
+    "responses": [
+        {
+            "textAnnotations": [
+                {
+                    "locale": "en", 
+                    "description": "package lesson1;\npublic class Bank {\nint getInterestRate() {\nreturn 0;\n", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 4, 
+                                "x": 1
+                            }, 
+                            {
+                                "y": 4, 
+                                "x": 313
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 313
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 1
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "package", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 4, 
+                                "x": 1
+                            }, 
+                            {
+                                "y": 4, 
+                                "x": 86
+                            }, 
+                            {
+                                "y": 25, 
+                                "x": 86
+                            }, 
+                            {
+                                "y": 25, 
+                                "x": 1
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "lesson1", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 4, 
+                                "x": 101
+                            }, 
+                            {
+                                "y": 4, 
+                                "x": 184
+                            }, 
+                            {
+                                "y": 25, 
+                                "x": 184
+                            }, 
+                            {
+                                "y": 25, 
+                                "x": 101
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": ";", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 4, 
+                                "x": 187
+                            }, 
+                            {
+                                "y": 4, 
+                                "x": 192
+                            }, 
+                            {
+                                "y": 25, 
+                                "x": 192
+                            }, 
+                            {
+                                "y": 25, 
+                                "x": 187
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "public", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 52, 
+                                "x": 3
+                            }, 
+                            {
+                                "y": 52, 
+                                "x": 71
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 71
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 3
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "class", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 52, 
+                                "x": 89
+                            }, 
+                            {
+                                "y": 52, 
+                                "x": 144
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 144
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 89
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "Bank", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 52, 
+                                "x": 159
+                            }, 
+                            {
+                                "y": 52, 
+                                "x": 204
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 204
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 159
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "{", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 52, 
+                                "x": 223
+                            }, 
+                            {
+                                "y": 52, 
+                                "x": 229
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 229
+                            }, 
+                            {
+                                "y": 75, 
+                                "x": 223
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "int", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 79, 
+                                "x": 41
+                            }, 
+                            {
+                                "y": 79, 
+                                "x": 72
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 72
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 41
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "getInterestRate", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 79, 
+                                "x": 88
+                            }, 
+                            {
+                                "y": 79, 
+                                "x": 265
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 265
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 88
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "(", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 79, 
+                                "x": 272
+                            }, 
+                            {
+                                "y": 79, 
+                                "x": 277
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 277
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 272
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": ")", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 79, 
+                                "x": 281
+                            }, 
+                            {
+                                "y": 79, 
+                                "x": 286
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 286
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 281
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "{", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 79, 
+                                "x": 308
+                            }, 
+                            {
+                                "y": 79, 
+                                "x": 313
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 313
+                            }, 
+                            {
+                                "y": 99, 
+                                "x": 308
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "return", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 104, 
+                                "x": 85
+                            }, 
+                            {
+                                "y": 104, 
+                                "x": 154
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 154
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 85
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": "0", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 104, 
+                                "x": 174
+                            }, 
+                            {
+                                "y": 104, 
+                                "x": 179
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 179
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 174
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "description": ";", 
+                    "boundingPoly": {
+                        "vertices": [
+                            {
+                                "y": 104, 
+                                "x": 185
+                            }, 
+                            {
+                                "y": 104, 
+                                "x": 190
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 190
+                            }, 
+                            {
+                                "y": 125, 
+                                "x": 185
+                            }
+                        ]
+                    }
+                }
+            ], 
+            "fullTextAnnotation": {
+                "text": "package lesson1;\npublic class Bank {\nint getInterestRate() {\nreturn 0;\n", 
+                "pages": [
+                    {
+                        "width": 894, 
+                        "property": {
+                            "detectedLanguages": [
+                                {
+                                    "languageCode": "en", 
+                                    "confidence": 0.65
+                                }, 
+                                {
+                                    "languageCode": "nl", 
+                                    "confidence": 0.35
+                                }
+                            ]
+                        }, 
+                        "blocks": [
+                            {
+                                "boundingBox": {
+                                    "vertices": [
+                                        {
+                                            "y": 4, 
+                                            "x": 1
+                                        }, 
+                                        {
+                                            "y": 4, 
+                                            "x": 192
+                                        }, 
+                                        {
+                                            "y": 25, 
+                                            "x": 192
+                                        }, 
+                                        {
+                                            "y": 25, 
+                                            "x": 1
+                                        }
+                                    ]
+                                }, 
+                                "blockType": "TEXT", 
+                                "confidence": 0.99, 
+                                "paragraphs": [
+                                    {
+                                        "boundingBox": {
+                                            "vertices": [
+                                                {
+                                                    "y": 4, 
+                                                    "x": 1
+                                                }, 
+                                                {
+                                                    "y": 4, 
+                                                    "x": 192
+                                                }, 
+                                                {
+                                                    "y": 25, 
+                                                    "x": 192
+                                                }, 
+                                                {
+                                                    "y": 25, 
+                                                    "x": 1
+                                                }
+                                            ]
+                                        }, 
+                                        "confidence": 0.99, 
+                                        "words": [
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 4, 
+                                                            "x": 1
+                                                        }, 
+                                                        {
+                                                            "y": 4, 
+                                                            "x": 86
+                                                        }, 
+                                                        {
+                                                            "y": 25, 
+                                                            "x": 86
+                                                        }, 
+                                                        {
+                                                            "y": 25, 
+                                                            "x": 1
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 1
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 11
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 11
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 1
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "p", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 14
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 24
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 24
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 14
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "a", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 28
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 37
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 37
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 28
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "c", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 37
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 45
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 45
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 37
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "k", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 49
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 60
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 60
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 49
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "a", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 63
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 73
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 73
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 63
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "g", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 76
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 86
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 86
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 76
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 4, 
+                                                            "x": 101
+                                                        }, 
+                                                        {
+                                                            "y": 4, 
+                                                            "x": 184
+                                                        }, 
+                                                        {
+                                                            "y": 25, 
+                                                            "x": 184
+                                                        }, 
+                                                        {
+                                                            "y": 25, 
+                                                            "x": 101
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 101
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 109
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 109
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 101
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "l", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 112
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 121
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 121
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 112
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 125
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 134
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 134
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 125
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "s", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 136
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 144
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 144
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 136
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "s", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 147
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 155
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 155
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 147
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "o", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 157
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 167
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 167
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 157
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "n", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 172
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 184
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 184
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 172
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "1", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 4, 
+                                                            "x": 187
+                                                        }, 
+                                                        {
+                                                            "y": 4, 
+                                                            "x": 192
+                                                        }, 
+                                                        {
+                                                            "y": 25, 
+                                                            "x": 192
+                                                        }, 
+                                                        {
+                                                            "y": 25, 
+                                                            "x": 187
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 187
+                                                                }, 
+                                                                {
+                                                                    "y": 4, 
+                                                                    "x": 192
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 192
+                                                                }, 
+                                                                {
+                                                                    "y": 25, 
+                                                                    "x": 187
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": ";", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "LINE_BREAK"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }, 
+                            {
+                                "boundingBox": {
+                                    "vertices": [
+                                        {
+                                            "y": 52, 
+                                            "x": 3
+                                        }, 
+                                        {
+                                            "y": 52, 
+                                            "x": 313
+                                        }, 
+                                        {
+                                            "y": 125, 
+                                            "x": 313
+                                        }, 
+                                        {
+                                            "y": 125, 
+                                            "x": 3
+                                        }
+                                    ]
+                                }, 
+                                "blockType": "TEXT", 
+                                "confidence": 0.97, 
+                                "paragraphs": [
+                                    {
+                                        "boundingBox": {
+                                            "vertices": [
+                                                {
+                                                    "y": 52, 
+                                                    "x": 3
+                                                }, 
+                                                {
+                                                    "y": 52, 
+                                                    "x": 313
+                                                }, 
+                                                {
+                                                    "y": 99, 
+                                                    "x": 313
+                                                }, 
+                                                {
+                                                    "y": 99, 
+                                                    "x": 3
+                                                }
+                                            ]
+                                        }, 
+                                        "confidence": 0.97, 
+                                        "words": [
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 3
+                                                        }, 
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 71
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 71
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 3
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 3
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 12
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 12
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 3
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "p", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 15
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 24
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 24
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 15
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "u", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 27
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 36
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 36
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 27
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "b", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 38
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 48
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 48
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 38
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "l", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 53
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 63
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 63
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 53
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "i", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 64
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 71
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 71
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 64
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "c", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 89
+                                                        }, 
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 144
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 144
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 89
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 89
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 98
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 98
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 89
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "c", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 102
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 110
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 110
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 102
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "l", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 111
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 119
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 119
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 111
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "a", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 123
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 132
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 132
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 123
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "s", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 135
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 144
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 144
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 135
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "s", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 159
+                                                        }, 
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 204
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 204
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 159
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 159
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 168
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 168
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 159
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "B", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 171
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 180
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 180
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 171
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "a", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 183
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 192
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 192
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 183
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "n", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 195
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 204
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 204
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 195
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "k", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 223
+                                                        }, 
+                                                        {
+                                                            "y": 52, 
+                                                            "x": 229
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 229
+                                                        }, 
+                                                        {
+                                                            "y": 75, 
+                                                            "x": 223
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 223
+                                                                }, 
+                                                                {
+                                                                    "y": 52, 
+                                                                    "x": 229
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 229
+                                                                }, 
+                                                                {
+                                                                    "y": 75, 
+                                                                    "x": 223
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "{", 
+                                                        "confidence": 0.98, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "EOL_SURE_SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.98, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 41
+                                                        }, 
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 72
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 72
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 41
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 41
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 48
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 48
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 41
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "i", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 50
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 59
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 59
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 50
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "n", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 62
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 72
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 72
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 62
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "t", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "nl"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 88
+                                                        }, 
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 265
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 265
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 88
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 88
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 97
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 97
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 88
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "g", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 100
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 109
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 109
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 100
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 111
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 120
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 120
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 111
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "t", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 123
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 132
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 132
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 123
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "I", 
+                                                        "confidence": 0.81, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 134
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 143
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 143
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 134
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "n", 
+                                                        "confidence": 0.95, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 149
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 158
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 158
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 149
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "t", 
+                                                        "confidence": 0.92, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 159
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 167
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 167
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 159
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 170
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 179
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 179
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 170
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "r", 
+                                                        "confidence": 0.97, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 183
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 193
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 193
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 183
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 0.92, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 197
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 206
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 206
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 197
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "s", 
+                                                        "confidence": 0.98, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 208
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 216
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 216
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 208
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "t", 
+                                                        "confidence": 0.95, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 218
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 227
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 227
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 218
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "R", 
+                                                        "confidence": 0.92, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 233
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 242
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 242
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 233
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "a", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 243
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 252
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 252
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 243
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "t", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 255
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 265
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 265
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 255
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.95, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "nl"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 272
+                                                        }, 
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 277
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 277
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 272
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 272
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 277
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 277
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 272
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "(", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "nl"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 281
+                                                        }, 
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 286
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 286
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 281
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 281
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 286
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 286
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 281
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": ")", 
+                                                        "confidence": 0.96, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.96, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "nl"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 308
+                                                        }, 
+                                                        {
+                                                            "y": 79, 
+                                                            "x": 313
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 313
+                                                        }, 
+                                                        {
+                                                            "y": 99, 
+                                                            "x": 308
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 308
+                                                                }, 
+                                                                {
+                                                                    "y": 79, 
+                                                                    "x": 313
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 313
+                                                                }, 
+                                                                {
+                                                                    "y": 99, 
+                                                                    "x": 308
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "{", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "LINE_BREAK"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "nl"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "nl"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }, 
+                                    {
+                                        "boundingBox": {
+                                            "vertices": [
+                                                {
+                                                    "y": 104, 
+                                                    "x": 85
+                                                }, 
+                                                {
+                                                    "y": 104, 
+                                                    "x": 190
+                                                }, 
+                                                {
+                                                    "y": 125, 
+                                                    "x": 190
+                                                }, 
+                                                {
+                                                    "y": 125, 
+                                                    "x": 85
+                                                }
+                                            ]
+                                        }, 
+                                        "confidence": 0.94, 
+                                        "words": [
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 104, 
+                                                            "x": 85
+                                                        }, 
+                                                        {
+                                                            "y": 104, 
+                                                            "x": 154
+                                                        }, 
+                                                        {
+                                                            "y": 125, 
+                                                            "x": 154
+                                                        }, 
+                                                        {
+                                                            "y": 125, 
+                                                            "x": 85
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 85
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 95
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 95
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 85
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "r", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 98
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 108
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 108
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 98
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "e", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 112
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 122
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 122
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 112
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "t", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 124
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 132
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 132
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 124
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "u", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 135
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 143
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 143
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 135
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "r", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }, 
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 146
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 154
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 154
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 146
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "n", 
+                                                        "confidence": 1, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "SPACE"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 104, 
+                                                            "x": 174
+                                                        }, 
+                                                        {
+                                                            "y": 104, 
+                                                            "x": 179
+                                                        }, 
+                                                        {
+                                                            "y": 125, 
+                                                            "x": 179
+                                                        }, 
+                                                        {
+                                                            "y": 125, 
+                                                            "x": 174
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 174
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 179
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 179
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 174
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": "0", 
+                                                        "confidence": 0.57, 
+                                                        "property": {
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.57, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }, 
+                                            {
+                                                "boundingBox": {
+                                                    "vertices": [
+                                                        {
+                                                            "y": 104, 
+                                                            "x": 185
+                                                        }, 
+                                                        {
+                                                            "y": 104, 
+                                                            "x": 190
+                                                        }, 
+                                                        {
+                                                            "y": 125, 
+                                                            "x": 190
+                                                        }, 
+                                                        {
+                                                            "y": 125, 
+                                                            "x": 185
+                                                        }
+                                                    ]
+                                                }, 
+                                                "symbols": [
+                                                    {
+                                                        "boundingBox": {
+                                                            "vertices": [
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 185
+                                                                }, 
+                                                                {
+                                                                    "y": 104, 
+                                                                    "x": 190
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 190
+                                                                }, 
+                                                                {
+                                                                    "y": 125, 
+                                                                    "x": 185
+                                                                }
+                                                            ]
+                                                        }, 
+                                                        "text": ";", 
+                                                        "confidence": 0.99, 
+                                                        "property": {
+                                                            "detectedBreak": {
+                                                                "type": "LINE_BREAK"
+                                                            }, 
+                                                            "detectedLanguages": [
+                                                                {
+                                                                    "languageCode": "en"
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ], 
+                                                "confidence": 0.99, 
+                                                "property": {
+                                                    "detectedLanguages": [
+                                                        {
+                                                            "languageCode": "en"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ], 
+                        "height": 444
+                    }
+                ]
+            }
+        }
+    ]
+}

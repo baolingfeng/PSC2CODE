@@ -1,0 +1,129 @@
+0
+-bint getInterestRate(){
+-int getInterestRate(){
+-int getinterestRate(){
+int get.InterestRate(){
+int get InterestRate(){
+int getInterestRate(){
+--------------------
+int getInterestRate(){
+
+1
+Bank def=new BANK _ DEF(); 
+Bank def=new BANK _DEF(); 
+Bank def=new BANK _ DEF(; 
+Bank def=new BANK_ DEF(); 
+Bank def=new BANK_DEF(); 
+--------------------
+Bank def=new BANK_DEF(); 
+
+2
+Bank xyz=new BANK _XYZ(); bo
+Bank xyz=new BANK _ XYZ(); 
+Bank xyz=new BANK_ XYZ(); 
+Bank xyz=new BANK _XYZ(); 
+Bank xyz=new BANK_XYZ(); 
+--------------------
+Bank xyz=new BANK_XYZ(); 
+
+3
+o return 10; 
+return 10; 
+return 20; 
+return a; 
+retura 5; 
+return 6; 
+return 0; 
+return 5; 
+return 6
+--------------------
+return a; 
+
+4
+Bank xyz=new Bank _ XYZ(); 
+Bank xyz=new Bank_ XYZ(); 
+--------------------
+Bank xyz=new Bank _ XYZ(); 
+
+5
+public class bus, 82 extends Bank
+--------------------
+public class bus, 82 extends Bank
+
+6
+public class Bank abc=new Bank _ABC(): extends Bank{
+--------------------
+public class Bank abc=new Bank ABC(): extends Bank{
+
+7
+Bank abc=new Bank _ ABC(); 
+Bank abc=new Bank _ABC(); 
+Bank abc=new Bank_ ABC(); 
+Bank abc=new Bank_ABC(); 
+Bank abc=new Bank ABC(); 
+Bank abc=new Bank _ABC
+--------------------
+Bank abc=new Bank_ABC(); 
+
+8
+System.out.println(xyzl.getInterestRate()); 
+System.out.println(def.getInterestRate()); 
+System.out.println(xyz.getInterestRate()); 
+System.out.println(abc.getInterestRate()); 
+--------------------
+System.out.println(def.getInterestRate()); 
+
+9
+public class BANK_ XYZ extends Bank{
+public class BANK _DEF extends Bank{
+public class BANK _XYZ extends Bank{
+public class BANK_XYZ extends Bank{
+public class BANK_DEF extends Bank{
+--------------------
+public class BANK_XYZ extends Bank{
+
+10
+public class Myclass{
+public class MyClass{
+--------------------
+public class MyClass{
+
+11
+Bank def=new Bank DEF(); 
+--------------------
+Bank def=new Bank DEF(); 
+
+12
+public static void main(String[]args){
+--------------------
+public static void main(String[]args){
+
+13
+package lesson1; 
+--------------------
+package lesson1; 
+
+14
+mon
+--------------------
+mon
+
+15
+System.out.println(); /
+System.out.println(); A
+System.out.println(); 
+--------------------
+System.out.println(); 
+
+16
+public class Bank _ ABC extends Bank{
+public class Bank _ABC extends Bank{
+public class Bank_ABC extends Bank{
+--------------------
+public class Bank_ABC extends Bank{
+
+17
+public class Bank{
+--------------------
+public class Bank{
+

@@ -1,0 +1,20 @@
+{
+    "uncorrected": [
+        "lesson1", 
+        "BANK_XYZ", 
+        "BANK_DEF", 
+        "Bank_ABC"
+    ], 
+    "len_words": 6, 
+    "total_correct": 35, 
+    "words": {
+        "_ABC": "ABC", 
+        "_DEF": "DEF", 
+        "xyzl": "xyz", 
+        "BANK_": "BANK", 
+        "Myclass": "MyClass", 
+        "_XYZ": "XYZ"
+    }, 
+    "corrected2": [], 
+    "len_uncorrected": 4
+}
