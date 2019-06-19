@@ -12,11 +12,10 @@ sys.path.append('../python')
 from setting import *
 from video import CVideo
 from dbimpl import DBImpl
-from MySQLDB import MySQLDB
 from youtube_download import download_youtube, parse_video
 import preprocess
 from video_tagging.predict import predict_video, load_model
-from adjust_ocr import GoogleOCRParser, generate_doc
+from OCR.adjust_ocr import GoogleOCRParser, generate_doc
 
 ASSETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 
@@ -434,7 +433,7 @@ def view_ocr():
     video_name = video[1].strip()
     ocr_folder = os.path.join(ocr_dir, video_name+"_"+video_hash)
 
-    parser = GoogleOCRParser(video_name, ocr_folder)
+    parser = GoogleOCRParser(video_name+"_"+video_hash, srt_file='')
 
     video_info = {}
     video_info['video_hash'] = video_hash
