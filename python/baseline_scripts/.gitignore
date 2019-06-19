@@ -123,9 +123,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-*.png
-*.mp4
-!webapp/*.mp4
 
 images/*
 annotations/*
