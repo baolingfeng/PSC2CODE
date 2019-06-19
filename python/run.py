@@ -28,7 +28,6 @@ if __name__ == "__main__":
 
     # preprocess if not
     if not os.path.exists(os.path.join(images_dir, video)): 
-        preprocess_video(video_mp4_path, out_folder=os.path.join(images_dir, video))
         extract_frames(video_mp4_path, os.path.join(images_dir, video))
         diff_frames(os.path.join(images_dir, video), thre=0.05, metric="NRMSE")
 
