@@ -1,4 +1,5 @@
 
+## The Steps of Our Approach
 Example Video: [Java Tutorial For Beginners 26 - Polymorphism in Java](https://www.youtube.com/watch?v=GnLtvmeGAWA)
 
 ```python
@@ -26,6 +27,34 @@ This step uses [ffmpeg](https://ffmpeg.org/) to extract frames then removes non-
 predict_video(os.path.join(images_dir, video), model_file="video_tagging/weights.h5")
 ```
 
+Due to the limited file size of GitHub, we upload our trained model `weights.h5` into [Dropbox](https://www.dropbox.com/s/6d6mpybwxtk8rek/weights-new.h5?dl=0)
+
 This step uses a trained model to identify the valid and invalid frames; the results are stored into a file named ["predict.txt"](../Images/Java%20Tutorial%20For%20Beginners%2026%20-%20Polymorphism%20in%20Java_GnLtvmeGAWA/predict.txt)
 
-3. Distinguishing Code versus Non-Code Regions
+3. Distinguishing Code versus Non-Code Regions (Related functions are in [video.py](video.py))
+
+```python
+cvideo = CVideo(video)
+# detect boundingx boxes and store the information of lines and rects into folder 'Lines'
+cvideo.cluster_lines()
+cvideo.adjust_lines()
+cvideo.detect_rects()
+# crop the bounding boxes of frames into folder 'Crops'
+cvideo.crop_rects()
+```
+
+The information abount detected bounding boxes are stored into the folder [Lines](../Lines/Java%20Tutorial%20For%20Beginners%2026%20-%20Polymorphism%20in%20Java_GnLtvmeGAWA), and the cropped frames are in the folder [Crops](../Crops/Java%20Tutorial%20For%20Beginners%2026%20-%20Polymorphism%20in%20Java_GnLtvmeGAWA)
+
+4. Correcting Errors in OCRed Source Code (Related source code and files are in [OCR](OCR))
+
+- Get OCRed source code from cropped frames.
+```python
+google_ocr(video_name, video_hash)
+```
+
+- Correct errors in the OCRed source code
+```python
+srt_file = os.path.join(video_dir, video_playlist, video+".srt") # caption file if exist
+parser = GoogleOCRParser(video, srt_file)
+parser.correct_words()
+```
