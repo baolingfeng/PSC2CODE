@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Codemotion UI</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="css/main.css" rel="stylesheet">
+</head>
+<body style="margin-left: 5px">
+	<div class="container">
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-md-9">
+				<h1>{{ name }}</h1>
+			</div>
+			<div class="input-group col-md-3" id="custom-search-input">
+				<input type="text" class="form-control input-lg" placeholder="Search" />
+				<span class="input-group-btn">
+					<button class="btn btn-info btn-lg" type="button" onclick="showResults()">
+						<i class="material-icons" data-toggle="tooltip" data-placement="left" title="results shown below">search</i>
+					</button>
+				</span>
+			</div>
+		</div>
+		<br>
+
+		{{#each segments}}
+		<div class="row transcript">
+			<div class="col-sm-{{ ../width }} video-container">
+				<!-- http://codepen.io/ollieRogers/pen/lfeLc -->
+				<!-- <span class="badge badge-pill badge-default">
+					<i class="material-icons fs">fullscreen</i>
+				</span> -->
+				<video preload="auto" id="s{{ start }}-video">
+				<!-- poster="images/loading.gif" -->
+					<source src="{{ ../url }}#t={{ start }},{{ finish }}" type="video/mp4" />
+					Your browser does not support HTML5 video.
+				</video>
+
+				<!-- http://stackoverflow.com/questions/19081355/how-can-apply-multiple-background-color-to-one-div -->
+				<div id="scrubber" style="background: linear-gradient(to right,
+						#10222e 0%, #10222e {{ begin }}%,
+						#636c72 {{ begin }}%, #636c72 {{ end }}%,
+						#10222e {{ end }}%, #10222e 100%)">
+					<div id="progress">
+						<div id="time"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col code-container">
+				{{#each code}}
+				<textarea style="display:none"
+						id="s{{ ../start }}l{{ @index }}-code"
+						data-language="{{ this.language }}">{{ this.text }}</textarea>
+				{{/each}}
+				<div class="editor" id="s{{ start }}-editor"
+						data-language="{{ code.[0].language }}">{{ code.[0].text }}</div>
+				<!-- convention; trim innerhtml -->
+			</div>
+			<h5 id="lf"> <!-- todo: check proper way to use css -->
+				<!-- {{#each code}}
+				{{#if @index}} <br> {{/if}}
+				<span class="badge badge-default pills" onclick="showCode(event, this)"
+						data-s-index="{{ ../start }}" data-l-index="{{ @index }}">
+					{{ this.l }}
+				</span>
+				{{/each}}
+				<br> -->
+				<span class="badge badge-default pills" id="ol{{ start }}" style="opacity: 0.1">
+					Code <!-- if ($(th.parentNode.parentNode).find('.pills').html().trim() != 'Code') -->
+				</span> <!-- this is where sub-intervals are shown -->
+			</h5>
+			<!-- <div class="pills">
+				<ul class="nav nav-pills">
+					{{#each code}}
+					<li class="nav-item">
+						<a class="nav-link{{#if @first}} active{{/if}}"
+								href="#" onclick="showCode(event, this)"
+								data-s-index="{{ ../start }}" data-l-index="{{ @index }}">
+							{{ this.l }}
+						</a>
+					</li>
+					{{/each}}
+				</ul>
+			</div> -->
+		</div>
+
+		<div id="s{{ start }}-vo" style="color: gray">
+			{{ voiceover }}
+		</div>
+		{{/each}}
+		<br>
+	</div>
+
+	<!-- todo: keep locally -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+	<!-- https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/initialize-ace.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/init-scrubbers.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function showCode(event, e) {
+			// event.preventDefault()
+			// var pills = e.parentNode.parentNode
+			// pills.getElementsByClassName('nav-link active')[0].className = 'nav-link'
+			// $(e).attr('class', 'nav-link active')
+			var s_index = $(e).data('s-index')
+			var id = 's'+s_index + 'l'+$(e).data('l-index') + '-code'
+			var text = document.getElementById(id).innerHTML
+			//console.log(text)
+			var editor = ace.edit('s'+s_index+'-editor')
+			editor.session.setValue(text)
+			editor.getSession().setMode('ace/mode/'+$('#'+id).data('language'))
+		}
+
+		var last = -1
+		function showScript() {
+			// console.log('show-script')
+			{{#each segments}}
+			var video = $('#s'+{{ start }}+'-video')[0]
+			var time = Math.floor(video.currentTime)
+			if (!video.paused && last != time) {
+				last = time
+				$.get('/transcript/'+time, function(result) {
+					if(result != '') // update scriptDiv
+						$('#s'+{{ start }}+'-vo').html(result)
+				})
+			}
+			{{/each}}
+		}
+
+		var refreshIntervalId
+		function initializeVideo() {
+			var video, fs_button
+			{{#each segments}}
+			video = $('#s'+{{ start }}+'-video')[0]
+			video.addEventListener('error',
+				function() { alert('video: out of buffer') })
+			// fs_button = $(video.parentNode).find('.fs')[0]
+			// fs_button.addEventListener('click', function() {
+			// 	var video = $('#s'+{{ start }}+'-video')[0]
+			// 	if (video.requestFullscreen)
+			// 		video.requestFullscreen()
+			// 	else if (video.mozRequestFullScreen)
+			// 		video.mozRequestFullScreen()
+			// 	else if (video.webkitRequestFullscreen)
+			// 		video.webkitRequestFullscreen()
+			// })
+			{{/each}}
+
+			$('.video-container video').click(toggle)
+		}
+
+		function toggle(v = null) {
+			var th = $(this).is('video') ? this : v
+			if (th.paused) {
+				$('video').each(function() { this.pause() })
+				$(th.parentNode.parentNode).find('.pills').animate({'opacity': 0.3})
+				refreshIntervalId = setInterval(showScript, 200)
+				th.play()
+				lastVideo = th
+			} else {
+				th.pause()
+				clearInterval(refreshIntervalId)
+				$(th.parentNode.parentNode).find('.pills').animate({'opacity': 0.7})
+				lastVideo = th
+				// $('.pills').show()
+			}
+		}
+
+		$(document).ready(function() {
+			initializeScrubbers()
+			$('.editor').each(initializeAce)
+
+			initializeVideo()
+			// initialize tooltips
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+
+		function highlightWords() {
+			$('.editor').each(function() {
+				var editor = ace.edit(this)
+				editor.findAll(RegExp(terms, 'g'), { regExp: true })
+			})
+		}
+
+		var terms = /codemotion/g // shouldn't match anything
+		function showResults() {
+			showMarkers()
+			var search = $('.input-lg').val() ? $('.input-lg').val() : 'codemotion'
+			if (!$('.input-lg').val())
+				$('.input-lg').val('nothing to search')
+			// different regex syntax?!
+			terms = search.split(' ').join('|') // /sample|import/g
+			highlightWords()
+		}
+
+		function showMarkers() {
+			$('.marker').each(function() { $(this).remove() })
+
+			var term = $('.input-lg').val()
+			if(term != '') { // possibilities?
+				$.get('/search/'+term, function(r) {
+					if (r.error == 'wait')
+						$('.input-lg').val('indexing in progress')
+					else if (r.apos.length == 0)
+						$('.input-lg').val('nothing found in code')
+					else {
+						var d = $('video').first()[0].duration
+						var pbar = $('#s0-video').parent().find('#progress')
+						var j = 0 // current segment
+						for (i in r.apos) {
+							if (r.apos[i] >= r.ie[j]) { // todo: check inclusiveness
+								pbar = $('#s'+r.ie[j]+'-video').parent().find('#progress')
+								j += 1
+							}
+							var pos = r.apos[i]/d * 100
+							pbar.append('<div class="marker" style="left:'+pos+'%; display:none"\
+									onclick="preview('+r.apos[i]+', this)" onmouseover="set(this)"></div>')
+						}
+					}
+					$('.marker').each(function() { $(this).fadeIn() })
+				})
+			}
+		}
+
+		var back
+		function set(m_div) {
+			back = $(m_div.parentNode.parentNode.parentNode).find('video')[0].currentTime
+		}
+
+		function preview(p, m_div) {
+			$(m_div).attr('onclick', 'rewind('+back+', this)')
+			//console.log('scrub to', p)
+			back = $(m_div.parentNode.parentNode.parentNode).find('video')[0].currentTime = p
+		}
+
+		function rewind(p, m_div) {
+			$(m_div).attr('onclick', 'preview('+back+', this)')
+			back = $(m_div.parentNode.parentNode.parentNode).find('video')[0].currentTime = p
+		}
+
+		$('input').keyup(function(event) {
+			if(event.keyCode == 13)
+				$('button').click() // enter key
+		})
+
+		var lastVideo = -1
+		$(window).keypress(function(e) {
+			if (e.keyCode == 32 && lastVideo != -1)
+				toggle(lastVideo) // spacebar
+		})
+	</script>
+</body>
+</html>

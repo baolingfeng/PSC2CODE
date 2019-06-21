@@ -1,0 +1,54 @@
+<html>
+
+<!--  MINIMAL DEMO of using Ace and diff-match-patch to create a
+      record-replay system
+
+      Dependencies:
+      - jQuery (included)
+      - jQuery doTimeout (included) http://benalman.com/projects/jquery-dotimeout-plugin/
+      - diff-match-patch (included) https://code.google.com/p/google-diff-match-patch/
+      - Ace (check out from GitHub into pwd) https://github.com/ajaxorg/ace-builds
+
+      Copyright Philip Guo - www.pgbovine.net
+
+ -->
+
+<head>
+
+<style type="text/css">
+#editor,#replayer { 
+  width: 500px;
+  height: 300px;
+  margin-bottom: 20px;
+}
+</style>
+
+<!-- dependencies -->
+<script src="jquery-1.11.0.min.js"></script>
+<script src="jquery.ba-dotimeout.min.js"></script>
+<script src="diff_match_patch.js"></script>
+<script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="diffplayer.js"></script>
+</head>
+<body>
+
+<!-- put your HTML code here -->
+
+<div id="editorPane">
+  Edit text here:
+  <div id="editor"></div>
+
+  <button id="replayBtn">Replay</button>
+</div>
+
+<div id="replayerPane">
+  Text replayed here:
+  <div id="replayer"></div>
+
+  <button id="prevBtn">Prev step</button>
+  <button id="nextBtn">Next step</button>
+</div>
+
+</body>
+</html>

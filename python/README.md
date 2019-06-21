@@ -1,6 +1,9 @@
 
 ## The Steps of Our Approach
-Example Video: [Java Tutorial For Beginners 26 - Polymorphism in Java](https://www.youtube.com/watch?v=GnLtvmeGAWA)
+Due to the limitation on file size, we use an example video: [Java Tutorial For Beginners 26 - Polymorphism in Java](https://www.youtube.com/watch?v=GnLtvmeGAWA) to show how to run our approach <b>psc2code</b>. 
+
+For the whole dataset, please refer to the following link in [Onedrive](https://zjueducn-my.sharepoint.com/:f:/g/personal/lingfengbao_zju_edu_cn/EvDJ4r1hz7FNgmzsAiVsxCIBcg-pYxOwiooKIPya-fssQg?e=DRk35B).
+
 
 ```python
 video_hash = 'GnLtvmeGAWA'
@@ -12,16 +15,18 @@ video = video_name + '_' + video_hash # The name of video is in format of its ti
 video_mp4_path = os.path.join(video_dir, video_playlist, video+".mp4") # the path of raw video
 ```
 
-1. Reducing Non-Informative Frames (Related functions are in [preprocess.py](preprocess.py))
+1. <b>Reducing Non-Informative Frames</b> (Related functions are in [preprocess.py](preprocess.py))
 
 ```python
 extract_frames(video_mp4_path, os.path.join(images_dir, video))
 diff_frames(os.path.join(images_dir, video), thre=0.05, metric="NRMSE")
 ```
 
-This step uses [ffmpeg](https://ffmpeg.org/) to extract frames then removes non-informative frames based on the dissimilarity
+This step uses [ffmpeg](https://ffmpeg.org/) to extract frames then removes non-informative frames based on the dissimilarity.
 
-2. Removing Non-Code and Noisy-Code Frames (Related source code and files are in [video_tagging](video_tagging))
+The outputs are stored in the folder [Images](../Images).
+
+2. <b>Removing Non-Code and Noisy-Code Frames</b> (Related source code and files are in [video_tagging](video_tagging))
 
 ```python
 predict_video(os.path.join(images_dir, video), model_file="video_tagging/weights.h5")
@@ -31,7 +36,7 @@ Due to the limited file size of GitHub, we upload our trained model `weights.h5`
 
 This step uses a trained model to identify the valid and invalid frames; the results are stored into a file named ["predict.txt"](../Images/Java%20Tutorial%20For%20Beginners%2026%20-%20Polymorphism%20in%20Java_GnLtvmeGAWA/predict.txt)
 
-3. Distinguishing Code versus Non-Code Regions (Related functions are in [video.py](video.py))
+3. <b>Distinguishing Code versus Non-Code Regions</b> (Related functions are in [video.py](video.py))
 
 ```python
 cvideo = CVideo(video)
@@ -45,7 +50,7 @@ cvideo.crop_rects()
 
 The information abount detected bounding boxes are stored into the folder [Lines](../Lines/Java%20Tutorial%20For%20Beginners%2026%20-%20Polymorphism%20in%20Java_GnLtvmeGAWA), and the cropped frames are in the folder [Crops](../Crops/Java%20Tutorial%20For%20Beginners%2026%20-%20Polymorphism%20in%20Java_GnLtvmeGAWA)
 
-4. Correcting Errors in OCRed Source Code (Related source code and files are in [OCR](OCR))
+4. <b>Correcting Errors in OCRed Source Code</b> (Related source code and files are in [OCR](OCR))
 
 - Get OCRed source code from cropped frames.
 ```python
@@ -58,3 +63,5 @@ srt_file = os.path.join(video_dir, video_playlist, video+".srt") # caption file 
 parser = GoogleOCRParser(video, srt_file)
 parser.correct_words()
 ```
+
+The results are stored in the folder [GoogleOCR](../GoogleOCR).

@@ -1,0 +1,23 @@
+{
+"name": "Ruby Essentials for Beginners (Part 1)",
+"width": 7,
+"fps": 30,
+"duration": 1715,
+"start": [
+	0, 145,226, 412, 695, 923, 1080,
+	1126
+],
+"code": [
+	[""],
+	["jonathan@TheHive\nirb(main):001:0>\nirb(main):002:1>\nirb(main):003:l>\n   :~$ irb\n   def te11_the_truth\n   true\n"],
+	["jonathan@TheHive\nirb(main):001:0>\nirb(main):002:1>\nirb(main):003:1>\n=> nil\nirb(main):004:0>\n=> true\nirb(main):005:0>\njonathan@TheHive\njonathan@TheHive\njonathan@TheHive\n   :~$ irb\n   def te11_the_truth\n   true\n   end\n   te11_the_truth\n   exit\n   :~$ mkdir ruby-samples\n   :~$ cd ruby-samples/\n   :~/ruby-samp1es$ vi ex2.rbl\n"],
+	["def factoria1(n)\n   ifn<1\n      raise \"argument must be > 0\"\n   else\n      n * factoria1(n - 1)\n   end\nend\nputs factoria1(1)\nputs factoria1(5)\nnuts factorial 0\n"],
+	["def factorial(n)\n   raise \"argument must be > 0\" if n < 1\n   return 1 1f n== 1\n   n * factorial(n-1)\nend\nputs factoria1(1)\nputs factoria1(5)\nputs factoria1(0)\n\"ex3 rb\" 11L, 156C written\n"],
+	["def polar(x,y)\n   return Math.hypot(y,x), Math.atan2(y,x)\nend\n"],
+	["argument must be > 0 (RuntimeError)\n   '<main>'\nampless cat ex3 rb\nust be > 0\" if n < 1\n)\nampless vi ex4.rb\namples$ ruby ex4.rb\namples$ vi ex4.rb\namples$ irb\n"],
+	["=> 10.0\nirb(main):005:0> def my_adder\nirb(main):006:1> 5 + 'five'\nirb(main):007:1> end\n=> nil\nirb(main) 008:0> my_adder\nTypeError: String can't be coerced into Fixnum\n   from (irb):6:in '+'\n   from (irb):6:in 'my_adder'\n   from (irb):8\n   from /usr/bin/irb:12:in '<main>'\nirb(main) 009:0> quit\njonathan@TheHive:~/ruby-samp1es$ vi ex6.rb\njonathan@TheHive:~/ruby-samples$ ruby ex5.rb\n.0000000000000002\n.0\njonathan@TheHive:~/ruby-samp1es$ vi ex5.rb\njonathan@TheHive:~/ruby-sampless vi ex6.rb\njonathan@TheHive:~/ruby-samp1es$ ruby ex6.rb\njonathan@TheHive:~/ruby-samp1es$ I\n"]
+],
+"l": [
+	["Ruby"], ["Ruby"], ["Ruby"], ["Ruby"], ["Ruby"], ["Ruby"], ["Ruby"], ["Ruby"]
+]
+}

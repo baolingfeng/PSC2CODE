@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8"> 
+	<title>Codemotion v0</title>
+</head>
+<body>
+	<!-- lots of options -->
+	<!-- http://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value -->
+	<!-- this is cool -->
+	<!-- http://thecodeplayer.com/walkthrough/spicing-up-the-html5-range-slider-input -->
+	<div id="slider">
+
+		<select id="vnum" onchange="changeVideo(this.value)">
+			<option value="3"> Angular 2 for Beginners - Tutorial 1 </option>
+			<option value="2"> CS50 - Week 8 - Python </option>
+			<option value="4"> Coding Challenge #52 - Random Walker </option>
+			<option value="5"> D3.js tutorial - 1 - Introduction </option>
+			<option value="6"> wat </option>
+		</select>
+		<br/><br/>
+
+		<input id="slide" type="range" min="1" value="1" onchange="updateSlider(this.value)" style="width:300px; "/>
+		<span id="time" style="vertical-align:2px; font-family:sans-serif; ">0:0:1 | frame #1</span>
+		<br/>
+		<div style="display:inline-block; "><img id="frame" alt="pic" width="483px"/></div>
+		<div style="display:inline-block; vertical-align:12%; " id="diff"><textarea id="code" rows="15" cols="50">-diff-</textarea></div>
+		<br/>
+		<div id="outputs">-outputs-</div>
+	</div>
+	
+	<script>
+		var vnum = 3;
+		var fps = 30.002146;
+		
+		var dur = 7*60 + 47;
+		document.getElementById('slide').max = dur;
+
+		document.getElementById('frame').src = 'resources'+vnum+'/frame1.jpg';
+		showAllSegments(1, true);
+
+		function changeVideo(val) {
+			vnum = val;	
+		}
+
+		function cleanPath(fnum, s, ext=-1) {
+			if (ext == -1) return 'resources'+vnum + '/frame'+fnum + '.'+s;
+			else return 'resources'+vnum + '/frame'+fnum + '_segment'+s + '.'+ext;
+		}
+
+		function updateSlider(val) {
+			var display = document.getElementById('time');
+			// display.innerHTML = (val*1913.3).toFixed(0);
+			var hour = Math.floor(val/3600);
+			var minute = Math.floor((val%3600)/60);
+			var sec = val%60;
+			val = Math.round((val-1)*fps) + 1; //
+			display.innerHTML = hour+':'+minute+':'+sec + ' | frame #' + val;
+			
+			var pic = document.getElementById('frame');
+			pic.src = cleanPath(val, 'jpg');
+			pic.alt = 'vid'+vnum+', frame'+val;
+
+			showAllSegments(val, true);
+		}
+
+		function read(file) {
+			var req = new XMLHttpRequest();
+			req.open('GET', file, false);
+			try { req.send(); } catch(e) {}
+			if (req.status == 200) return req.responseText;
+			else return null;
+		}
+
+		function display(f, s, auto=false) { //frame, segment
+			// file = cleanPath(f, s, 'txt');
+			file = cleanPath(f, 'html');
+			var code = read(file);
+			if (code != null) document.getElementById('diff').innerHTML = code;
+			else document.getElementById('code').innerHTML = 'error: extracted code not found';
+			
+			if (!auto) {
+				var pic = document.getElementById('frame');
+				pic.src = cleanPath(f, s, 'jpg');
+				pic.alt = 'vid'+vnum + ', frame'+f + ', segment'+s;
+			}
+		}
+
+		function showAllSegments(frame, auto=false) {
+			var file = cleanPath(frame, 'txt');
+			var text = read(file);
+			var o = document.getElementById('outputs');
+			if (text == null) {
+				o.innerHTML = 'No segments found.';
+				// document.getElementById('code').innerHTML = '';
+			}
+			else {
+				o.innerHTML = '';
+				var updated = false;
+				document.getElementById('diff').innerHTML = '';
+				var i = 0;
+				do { //segment0...?
+					var path = cleanPath(frame, i, 'jpg');
+					var img_exists;
+					try { img_exists = read(path); } catch(e) {}
+					if (img_exists) {
+						o.innerHTML += '<img src="'+path+'" width="'+225+'px" onclick="display('+frame+', '+i+')"> ';
+						if (!updated) { updated = true; display(frame, i, auto); }
+					}
+					i = i+1;
+				} while(i < text);
+				if (Number(text) == '0' && o.innerHTML != '')
+					o.innerHTML += '<br/>0th segment';
+			}
+		}
+	</script>
+</body>
+</html>

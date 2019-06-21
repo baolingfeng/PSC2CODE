@@ -1,0 +1,175 @@
+diff --git a/v1/backend/phase2.py b/v1/backend/phase2.py
+index 931d304..ab3b016 100644
+--- a/v1/backend/phase2.py
++++ b/v1/backend/phase2.py
+@@ -27,7 +27,7 @@ def process(frame, s, path):
+ 				text = re.sub(r'<[^>]*>', '', line.strip())
+ 				text = re.sub(r'^\d+\b', '', text.strip()) # https://regex101.com
+ 				# fix special characters
+-				text = unidecode(text).strip() # "untested"
++				text = unidecode(text).strip()
+ 				# text = text.replace(u'\u201c', '"').replace(u'\u201d', '"')
+ 				# text = text.replace(u'\u2018', '\'').replace(u'\u2019', '\'')
+ 				# decode HTML-safe sequences
+@@ -44,7 +44,8 @@ def process(frame, s, path):
+ 			os.system("rm "+path+"/frame%d-segment%d.hocr" % (frame, i))
+ 			base = min(res, key=operator.itemgetter(0))[0]
+ 
+-			levels = [r for r in res if r[0] > base*1.3] # no equality, for when base = 0
++			# no equality below, for case when base = 0
++			levels = [r for r in res if r[0] > base*1.3]
+ 			if len(levels) == 0:
+ 				lines = ""
+ 				for r in res:
+diff --git a/v1/backend/phase3.py b/v1/backend/phase3.py
+index 9b65fa1..a16a57d 100644
+--- a/v1/backend/phase3.py
++++ b/v1/backend/phase3.py
+@@ -1,64 +1,82 @@
++debug = False
++
+ import diff_match_patch as d
+ import arrow_keys as kb
+-import ocr, unidecode, re
++import ocr, unidecode, re, sys
+ 
+-vnum, fnum, fps = 3, 1, 24
++vnum, fnum, fps = 3, 49, 24
+ print 'starting with frame', fnum, '\n'
+ 
+-code, prev = ['', '', '', '', ''], 'lo'
++path = '../public/extracts/video'+str(vnum)
++
++code, prev = [''], 'begin'
++read, th = True, 0
+ while True:
+-	#if prev == '': next = kb.get()
+-	#if next == 'right' or next == 'down' or prev != '':
+ 	# read number of segments
+-		try: file = open('../public/extracts/video%d/frame%d-segment1.txt' % (vnum, fnum))
+-		except IOError: print 'no more files'; break
++	try:
++		file = open(path+'/frame%d-segment1.txt' % fnum)
++		# if not read: print
++		print '\rframe%d, segment1' % fnum,
++		sys.stdout.flush()
++		read = True
++	except IOError:
++		if read and fnum > th:
++			print
++			th += 5000
++		print '\rno more files...     ',
++		sys.stdout.flush()
++		read = False
+ 	s = 3 # int(file.read())
+ 	file.close()
+ 
+-		# read text from all segments
+-		new_text = ''
++	# todo: ignore entire windows, language detection
++
++	# read text from each segment
+ 	for snum in range(s):
+-			try: file = open('../public/extracts/video%d/frame%d-segment%d.txt' % (vnum, fnum, snum))
++		try: file = open(path+'/frame%d-segment%d.txt' % (fnum, snum))
+ 		except IOError: continue
+-			# distance text from separate segments
+-			if new_text != '': new_text += '\n'
++
+ 		txt = file.read()
+ 		txt = txt.decode('ascii', 'ignore')
+ 		keywords = ocr.strict_check(txt)
++		tag = ''
+ 		if(len(keywords) > 0):
+-				# print 'txt:', txt
+-				print 'check:', len(keywords)
+-				# print keywords
+-				new_text += txt
++			if debug: print 'check:', len(keywords)
+ 		else:
+ 			keywords = ocr.check_for_keywords(txt)
+ 			if(len(keywords) > 0):
+-					new_text += '\n# maybe\n' + txt
++				tag = 'maybe'
+ 			else:
+-					new_text += '\n# unlikely\n' + txt
++				tag = 'unlikely'
+ 		file.close()
+ 
+ 		# show any text extracted
+-		if new_text != '':
+-			if new_text == code[4]:
+-				print fnum, 'identical=======\n'
+-				prev = 'id'
++		if txt != '':
++			if txt == code[-1]:
++				if debug: print fnum, 'identical=======\n'
++				prev = 'blink'
+ 
+ 				# dmp = d.diff_match_patch()
+-				# diffs = dmp.diff_main(code[4], new_text)
+-				f = open('../public/extracts/video%d/frame%d.html' % (vnum, fnum), 'w')
++				# diffs = dmp.diff_main(code[-1], txt)
++				f = open(path+'/frame%d-segment%d-%s.html' % (fnum, snum, tag), 'w')
++
+ 				# f.write('<meta http-equiv="refresh" content="1">')
+ 				# f.write(dmp.diff_prettyHtml(diffs))
+-				f.write('<pre>' + new_text.replace('\n', '<br/>') + '</pre>') # code, not diff
++
++				# just code instead of diff
++				f.write('<pre>' + txt.replace('\n', '<br/>') + '</pre>')
+ 				f.close()
+ 			else:
++				if len(code) > 4:
++					print '\nreached buffer capacity'
+ 					code.pop(0)
+-				code.append(new_text)
++				code.append(txt)
+ 
+ 				dmp = d.diff_match_patch()
+-				diffs = dmp.diff_main(code[3], code[4])
++				diffs = dmp.diff_main(code[-2], code[-1])
+ 				dmp.diff_cleanupSemantic(diffs)
+-				print 'diffs:'
++				if debug: print 'diffs:'
++				if debug:
+ 					for x in diffs:
+ 					# if x[0] != 0:
+ 						for line in re.split('\n|\\n', x[1]) :
+@@ -67,25 +85,24 @@ while True:
+ 							else: print '=',
+ 							print line.rstrip()
+ 
+-				f = open('../public/extracts/video%d/frame%d.html' % (vnum, fnum), 'w')
+-				print '../public/extracts/video%d/frame%d.html' % (vnum, fnum)
++				f = open(path+'/frame%d-segment%d-%s.html' % (fnum, snum, tag), 'w')
++				if debug: print path+'/frame%d.html' % fnum
++
+ 				# f.write('<meta http-equiv="refresh" content="1">')
+ 				f.write(dmp.diff_prettyHtml(diffs))
+ 				f.close()
+ 
+-				#patches = dmp.patch_make(code[3], diffs)
+-				#print dmp.patch_toText(patches)
++				#patches = dmp.patch_make(code[-2], diffs)
++				#if debug: print dmp.patch_toText(patches)
+ 
+-				print 'code:',
+-				print code[4].rstrip()
+-				print '----------------'
++				if debug: print 'code:',
++				if debug: print code[-1].rstrip()
++				if debug: print '----------------'
+ 				prev = ''
+ 		else:
+-			# if prev != 'bl':
+-				# print fnum, 'empty'
+-			prev = 'bl'
++			# if prev != 'blank':
++				# if debug: print fnum, 'empty'
++			prev = 'blank'
+ 
+ 	# go to next frame
+ 	fnum += fps
+-
+-	#else: print 'break'; break

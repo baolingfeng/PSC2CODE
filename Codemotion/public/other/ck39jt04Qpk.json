@@ -1,0 +1,26 @@
+{
+"name": 3 - Canvas - New Beginner 2D Game Programming,
+"width": 4,
+"fps": 30.0,
+"duration": 419,
+"start": [
+	0, 70, 105, 167, 232, 
+	292, 
+	397, 451, 
+],
+"code": [
+	[""], 
+	["package dev.codenmore.tilegame.\nimport javax.swing.]Frame;\npublic class Display {\n   private JFrame frame;\n   private ggavgg canvas;\n   private String title;\n   private int width, height;\n   public Display(String title, int width, int height){\n      this. title = title;\n      this.width = width;\n      this.height = height;\n      createDisplay();\n   }\n   private void createDisplay(){\n      frame = new JFrame title ;\n"], 
+	["   u\n   1e, int width, int height){\ny(){\n   height);\n-Operation(JFrame.EXII_ON_CLO$E);\n:lse);\n:tiveTo null '\n"], 
+	["canvas .\n   .0 action(Event argO, Object argl) : boolean - Component '\n   O add(PopupMenu argO) : void\n   Q9addComponentListener(ComponentListener argO) : void\n   Q39addFocusListener(FocusListener argO) : void\n   addHierarchyBoundsListener(HierarchyBoundsListener ar\n   addHierarch Listener Hierarch Listener ard\n"], 
+	["                                                                              u\n                                             createDisplay();\n                              }\n                              private void createDispl\n                                             frame = new JFrame(t\n                                             frame.setSize(width,\n                                             frame.setDefau1tC105\n                                             frame.setResizab1e(f\n                                             frame.setLocationRe1\n                                             frame.setvisib1e(tru\nJ 'n _. _. ,_. J _.\n   H. .1. ... '3' = In, 4 . _- ._I\n                                             canvas = new Canvas(\n                                             canvas.setPreferredS\n                                             canvas.setMaximumSiz\n                                             canvas.setMinimumSiz\n   vfi .L. |_v'l ['1\n   III\n   \"J\n                                             frame.add(canvas);\n                                             frame.pacH\n   .\"J\n_v\n'r\n\"v\n"], 
+	["6v gnome-a114,} vi} \"fibcnv\n[I] Launcher.java ESE [D DisplayJava\n   package dev.codenmore.tilegame;\n   import dev.codenmore.tilegame.display.Disp1ay;\n   public class Launcher {\n      public static void main(String[] args){\n      new Display(\"Title!\", 300, 300)fl\n"], 
+	["this.height\ndispl 0 hdghtflnt-Ganm\n"], 
+	["   package dev.codenmore.tilegame;\n   import dev.codenmore.tilegame.display.0isplay;\nE public class Game {\n         private Display display;\n         public int width, height;\n         public Game(String title, int width, int height){\n            this.width = width;\n            this.height = height;\n            display = new Display(title, width, height);\n"], 
+],
+"l": [
+	["Java"], ["Java"], ["Java"], ["Java"], ["Java"], 
+	["Java"], 
+	["Java"], ["Java"], 
+]
+}

@@ -1,0 +1,699 @@
+1
+000:000:00,500 --> 000:000:03,840
+what's going on<font color="#E5E5E5"> everyone</font><font color="#CCCCCC"> my name is</font>
+
+2
+000:000:02,490 --> 000:000:05,430
+<font color="#CCCCCC">kotor</font><font color="#E5E5E5"> more and welcome to the third</font>
+
+3
+000:000:03,840 --> 000:000:06,990
+<font color="#CCCCCC">episode</font><font color="#E5E5E5"> in the new beginner java game</font>
+
+4
+000:000:05,430 --> 000:000:08,309
+programming tutorial series in this
+
+5
+000:000:06,990 --> 000:000:10,349
+tutorial<font color="#CCCCCC"> we're going to</font><font color="#E5E5E5"> work a</font><font color="#CCCCCC"> little</font>
+
+6
+000:000:08,309 --> 000:000:12,480
+<font color="#CCCCCC">bit more with our display so before we</font>
+
+7
+000:000:10,349 --> 000:000:14,099
+get<font color="#CCCCCC"> started I</font><font color="#E5E5E5"> am going to make videos</font>
+
+8
+000:000:12,480 --> 000:000:16,199
+<font color="#E5E5E5">much more often</font><font color="#CCCCCC"> and they're going</font><font color="#E5E5E5"> to be</font>
+
+9
+000:000:14,099 --> 000:000:18,359
+of<font color="#E5E5E5"> much higher quality</font><font color="#CCCCCC"> in just a</font><font color="#E5E5E5"> few</font>
+
+10
+000:000:16,199 --> 000:000:20,310
+days so by tutorial 6 everything should
+
+11
+000:000:18,359 --> 000:000:22,289
+<font color="#CCCCCC">be much better</font><font color="#E5E5E5"> I'll have a new</font><font color="#CCCCCC"> computer</font>
+
+12
+000:000:20,310 --> 000:000:24,090
+<font color="#E5E5E5">so hopefully I'll be</font><font color="#CCCCCC"> able</font><font color="#E5E5E5"> to get things</font>
+
+13
+000:000:22,289 --> 000:000:25,920
+<font color="#E5E5E5">out much faster</font><font color="#CCCCCC"> and</font><font color="#E5E5E5"> make them properly</font>
+
+14
+000:000:24,090 --> 000:000:28,470
+<font color="#CCCCCC">because right now my</font><font color="#E5E5E5"> computer can barely</font>
+
+15
+000:000:25,920 --> 000:000:31,529
+handle<font color="#E5E5E5"> recording anyways</font><font color="#CCCCCC"> to today's</font>
+
+16
+000:000:28,470 --> 000:000:33,090
+tutorial<font color="#E5E5E5"> today's tutorial</font><font color="#CCCCCC"> we have a</font>
+
+17
+000:000:31,529 --> 000:000:34,530
+window so if you run<font color="#E5E5E5"> the test code that</font>
+
+18
+000:000:33,090 --> 000:000:36,059
+we had in the<font color="#E5E5E5"> last tutorial we got our</font><font color="#CCCCCC"> J</font>
+
+19
+000:000:34,530 --> 000:000:38,370
+<font color="#CCCCCC">frame displayed to the screen it's got a</font>
+
+20
+000:000:36,059 --> 000:000:39,960
+title<font color="#E5E5E5"> everything works perfectly but</font>
+
+21
+000:000:38,370 --> 000:000:42,270
+<font color="#E5E5E5">there's one</font><font color="#CCCCCC"> big problem</font>
+
+22
+000:000:39,960 --> 000:000:43,890
+there's no graphics in it and if we want
+
+23
+000:000:42,270 --> 000:000:46,500
+<font color="#CCCCCC">to have a game</font><font color="#E5E5E5"> we need some way</font><font color="#CCCCCC"> to</font>
+
+24
+000:000:43,890 --> 000:000:48,420
+display<font color="#E5E5E5"> graphics</font><font color="#CCCCCC"> to display</font><font color="#E5E5E5"> images to</font>
+
+25
+000:000:46,500 --> 000:000:50,460
+the screen<font color="#E5E5E5"> so today we're going to add</font>
+
+26
+000:000:48,420 --> 000:000:53,010
+something<font color="#E5E5E5"> to this J frame that will</font>
+
+27
+000:000:50,460 --> 000:000:55,730
+allow<font color="#E5E5E5"> us</font><font color="#CCCCCC"> to see images</font><font color="#E5E5E5"> that way we can</font>
+
+28
+000:000:53,010 --> 000:000:58,710
+eventually have<font color="#CCCCCC"> a game that has graphics</font>
+
+29
+000:000:55,730 --> 000:001:01,320
+so how do we<font color="#E5E5E5"> get images into a J frame</font>
+
+30
+000:000:58,710 --> 000:001:03,090
+<font color="#CCCCCC">well</font><font color="#E5E5E5"> we use something called a canvas so</font>
+
+31
+000:001:01,320 --> 000:001:04,710
+<font color="#CCCCCC">create a private canvas element</font><font color="#E5E5E5"> called</font>
+
+32
+000:001:03,090 --> 000:001:09,780
+canvas<font color="#E5E5E5"> and when you import it make sure</font>
+
+33
+000:001:04,710 --> 000:001:12,180
+<font color="#E5E5E5">you import java.awt KS there we go now</font><font color="#CCCCCC"> a</font>
+
+34
+000:001:09,780 --> 000:001:13,860
+<font color="#E5E5E5">canvas</font><font color="#CCCCCC"> basically allows us to draw</font>
+
+35
+000:001:12,180 --> 000:001:15,659
+graphics<font color="#E5E5E5"> to it so we're going to draw</font>
+
+36
+000:001:13,860 --> 000:001:18,540
+all<font color="#E5E5E5"> of our images such</font><font color="#CCCCCC"> as our player</font>
+
+37
+000:001:15,659 --> 000:001:20,790
+image our title images<font color="#E5E5E5"> all of that we're</font>
+
+38
+000:001:18,540 --> 000:001:23,009
+<font color="#E5E5E5">going to draw all those</font><font color="#CCCCCC"> images to this</font>
+
+39
+000:001:20,790 --> 000:001:24,750
+canvas<font color="#E5E5E5"> element right</font><font color="#CCCCCC"> here then we're</font>
+
+40
+000:001:23,009 --> 000:001:27,150
+going to add this canvas<font color="#E5E5E5"> element to our</font>
+
+41
+000:001:24,750 --> 000:001:29,159
+<font color="#CCCCCC">jframe that way we're</font><font color="#E5E5E5"> able to see it I</font>
+
+42
+000:001:27,150 --> 000:001:30,420
+hope<font color="#E5E5E5"> that makes sense</font><font color="#CCCCCC"> and I'm going</font><font color="#E5E5E5"> to</font>
+
+43
+000:001:29,159 --> 000:001:31,979
+give you guys a quick<font color="#E5E5E5"> analogy to</font>
+
+44
+000:001:30,420 --> 000:001:33,630
+hopefully make<font color="#E5E5E5"> some of you understand</font>
+
+45
+000:001:31,979 --> 000:001:35,700
+this a little<font color="#CCCCCC"> bit better</font><font color="#E5E5E5"> if this doesn't</font>
+
+46
+000:001:33,630 --> 000:001:37,350
+help you that's fine<font color="#E5E5E5"> so in real life a</font>
+
+47
+000:001:35,700 --> 000:001:39,750
+painter will paint his images as
+
+48
+000:001:37,350 --> 000:001:41,009
+painting on a canvas<font color="#CCCCCC"> well in Java we're</font>
+
+49
+000:001:39,750 --> 000:001:43,350
+going to do the same<font color="#E5E5E5"> thing we're going</font>
+
+50
+000:001:41,009 --> 000:001:46,049
+<font color="#E5E5E5">to paint all</font><font color="#CCCCCC"> of art or draw all of our</font>
+
+51
+000:001:43,350 --> 000:001:47,640
+images to this canvas<font color="#E5E5E5"> object then in</font>
+
+52
+000:001:46,049 --> 000:001:49,619
+real life when a painter is finished a
+
+53
+000:001:47,640 --> 000:001:51,810
+<font color="#E5E5E5">painting he will put it in a frame and</font>
+
+54
+000:001:49,619 --> 000:001:54,030
+display it<font color="#CCCCCC"> to the world for</font><font color="#E5E5E5"> the world</font><font color="#CCCCCC"> to</font>
+
+55
+000:001:51,810 --> 000:001:56,100
+see well in Java<font color="#CCCCCC"> we'll do the same</font><font color="#E5E5E5"> thing</font>
+
+56
+000:001:54,030 --> 000:001:58,110
+<font color="#CCCCCC">we'll draw all of our graphics to the</font>
+
+57
+000:001:56,100 --> 000:002:00,390
+canvas<font color="#CCCCCC"> element then we'll add it to the</font>
+
+58
+000:001:58,110 --> 000:002:02,790
+jframe<font color="#E5E5E5"> that way we're able to see it on</font>
+
+59
+000:002:00,390 --> 000:002:05,100
+<font color="#CCCCCC">the screen</font><font color="#E5E5E5"> hopefully that makes sense</font>
+
+60
+000:002:02,790 --> 000:002:06,990
+<font color="#E5E5E5">now</font><font color="#CCCCCC"> so we draw images to the canvas</font><font color="#E5E5E5"> and</font>
+
+61
+000:002:05,100 --> 000:002:07,439
+then we display<font color="#E5E5E5"> the canvas using the</font>
+
+62
+000:002:06,990 --> 000:002:09,300
+jframe
+
+63
+000:002:07,439 --> 000:002:12,450
+<font color="#E5E5E5">so let's go ahead and initialize that</font>
+
+64
+000:002:09,300 --> 000:002:13,440
+canvas<font color="#E5E5E5"> equals a new canvas and we also</font>
+
+65
+000:002:12,450 --> 000:002:15,780
+have to set the size
+
+66
+000:002:13,440 --> 000:002:18,180
+<font color="#E5E5E5">our canvas so canvas set preferred size</font>
+
+67
+000:002:15,780 --> 000:002:19,980
+and canvas<font color="#E5E5E5"> doesn't just take in a width</font>
+
+68
+000:002:18,180 --> 000:002:22,530
+and height as parameters<font color="#CCCCCC"> it takes in a</font>
+
+69
+000:002:19,980 --> 000:002:23,880
+new<font color="#E5E5E5"> dimension object and</font><font color="#CCCCCC"> that takes in a</font>
+
+70
+000:002:22,530 --> 000:002:26,790
+width<font color="#CCCCCC"> in height</font><font color="#E5E5E5"> and that's just the way</font>
+
+71
+000:002:23,880 --> 000:002:28,500
+canvases were created so that<font color="#CCCCCC"> will set</font>
+
+72
+000:002:26,790 --> 000:002:30,960
+<font color="#E5E5E5">the preferred size of our canvas</font><font color="#CCCCCC"> the</font>
+
+73
+000:002:28,500 --> 000:002:33,180
+size that<font color="#E5E5E5"> we</font><font color="#CCCCCC"> want our canvas to be which</font>
+
+74
+000:002:30,960 --> 000:002:34,650
+<font color="#E5E5E5">is the width in height of our game we're</font>
+
+75
+000:002:33,180 --> 000:002:36,660
+going to copy this<font color="#E5E5E5"> line down two more</font>
+
+76
+000:002:34,650 --> 000:002:38,760
+times<font color="#E5E5E5"> and instead</font><font color="#CCCCCC"> of set preferred size</font>
+
+77
+000:002:36,660 --> 000:002:41,880
+we're going<font color="#CCCCCC"> to do set maximum</font><font color="#E5E5E5"> size and</font>
+
+78
+000:002:38,760 --> 000:002:43,770
+<font color="#E5E5E5">we're going</font><font color="#CCCCCC"> to do set</font><font color="#E5E5E5"> minimum size this</font>
+
+79
+000:002:41,880 --> 000:002:45,390
+<font color="#E5E5E5">is to make sure</font><font color="#CCCCCC"> that our canvas will</font>
+
+80
+000:002:43,770 --> 000:002:47,370
+always stay at the width<font color="#E5E5E5"> and</font><font color="#CCCCCC"> height that</font>
+
+81
+000:002:45,390 --> 000:002:49,020
+<font color="#E5E5E5">we give it so we set the size we</font><font color="#CCCCCC"> want it</font>
+
+82
+000:002:47,370 --> 000:002:50,820
+to be<font color="#CCCCCC"> a two</font><font color="#E5E5E5"> width and height then we set</font>
+
+83
+000:002:49,020 --> 000:002:52,590
+the<font color="#E5E5E5"> maximum and minimum size of it to</font>
+
+84
+000:002:50,820 --> 000:002:53,880
+width<font color="#E5E5E5"> and height this will make sure</font><font color="#CCCCCC"> it</font>
+
+85
+000:002:52,590 --> 000:002:56,760
+stays at the width and<font color="#CCCCCC"> height that</font><font color="#E5E5E5"> we</font>
+
+86
+000:002:53,880 --> 000:002:58,230
+give it so we initialize our canvas we
+
+87
+000:002:56,760 --> 000:003:00,600
+set the size of it<font color="#CCCCCC"> now we</font><font color="#E5E5E5"> have to</font>
+
+88
+000:002:58,230 --> 000:003:04,200
+actually<font color="#CCCCCC"> add it to our</font><font color="#E5E5E5"> Dre frame frame</font>
+
+89
+000:003:00,600 --> 000:003:05,910
+add canvas<font color="#E5E5E5"> it's as simple as that</font>
+
+90
+000:003:04,200 --> 000:003:07,890
+then at the end<font color="#E5E5E5"> we have to do framed up</font>
+
+91
+000:003:05,910 --> 000:003:10,080
+<font color="#CCCCCC">PAC and framed up PAC will basically</font>
+
+92
+000:003:07,890 --> 000:003:12,060
+resize<font color="#CCCCCC"> our window a little</font><font color="#E5E5E5"> bit that way</font>
+
+93
+000:003:10,080 --> 000:003:14,280
+we're able<font color="#E5E5E5"> to see the</font><font color="#CCCCCC"> canvas</font><font color="#E5E5E5"> fully if</font>
+
+94
+000:003:12,060 --> 000:003:15,900
+you don't have framed<font color="#CCCCCC"> up PAC everything</font>
+
+95
+000:003:14,280 --> 000:003:19,020
+will still<font color="#E5E5E5"> work but you might not see</font>
+
+96
+000:003:15,900 --> 000:003:22,080
+all of<font color="#CCCCCC"> the canvas</font><font color="#E5E5E5"> so there we go</font>
+
+97
+000:003:19,020 --> 000:003:24,570
+we<font color="#E5E5E5"> have just added a canvas</font><font color="#CCCCCC"> with the</font>
+
+98
+000:003:22,080 --> 000:003:26,370
+size that<font color="#E5E5E5"> we give it to our</font><font color="#CCCCCC"> J frame to</font>
+
+99
+000:003:24,570 --> 000:003:27,510
+our window so if you run<font color="#CCCCCC"> the test</font><font color="#E5E5E5"> code</font>
+
+100
+000:003:26,370 --> 000:003:29,400
+that we<font color="#E5E5E5"> created in the last</font><font color="#CCCCCC"> tutorial</font>
+
+101
+000:003:27,510 --> 000:003:31,980
+<font color="#CCCCCC">we'll</font><font color="#E5E5E5"> get our window displayed to the</font>
+
+102
+000:003:29,400 --> 000:003:33,810
+screen<font color="#CCCCCC"> everything's</font><font color="#E5E5E5"> the same and that's</font>
+
+103
+000:003:31,980 --> 000:003:36,780
+a problem<font color="#CCCCCC"> everything is the same</font>
+
+104
+000:003:33,810 --> 000:003:38,640
+well we<font color="#E5E5E5"> added our canvas but there's</font>
+
+105
+000:003:36,780 --> 000:003:40,350
+nothing<font color="#E5E5E5"> within our window and that's</font>
+
+106
+000:003:38,640 --> 000:003:42,480
+because we haven't actually<font color="#E5E5E5"> drawn</font>
+
+107
+000:003:40,350 --> 000:003:44,730
+anything<font color="#E5E5E5"> to the canvas yet we haven't</font>
+
+108
+000:003:42,480 --> 000:003:47,550
+<font color="#E5E5E5">told the canvas to draw anything to our</font>
+
+109
+000:003:44,730 --> 000:003:49,170
+<font color="#CCCCCC">J frame sadly we can't draw anything</font>
+
+110
+000:003:47,550 --> 000:003:51,209
+<font color="#E5E5E5">just yet because we have much more</font>
+
+111
+000:003:49,170 --> 000:003:52,530
+<font color="#CCCCCC">preparation before we can do</font><font color="#E5E5E5"> that but I</font>
+
+112
+000:003:51,209 --> 000:003:56,280
+just<font color="#E5E5E5"> wanted to get that done in</font><font color="#CCCCCC"> this</font>
+
+113
+000:003:52,530 --> 000:003:57,750
+tutorial<font color="#E5E5E5"> next we're going to have to</font>
+
+114
+000:003:56,280 --> 000:004:00,090
+create a<font color="#CCCCCC"> new class right click on your</font>
+
+115
+000:003:57,750 --> 000:004:01,709
+<font color="#E5E5E5">main package and go up to new class we</font>
+
+116
+000:004:00,090 --> 000:004:04,260
+<font color="#CCCCCC">are</font><font color="#E5E5E5"> going to name this class game and</font>
+
+117
+000:004:01,709 --> 000:004:06,900
+we'll put it<font color="#E5E5E5"> in our main package there</font>
+
+118
+000:004:04,260 --> 000:004:09,420
+we go<font color="#E5E5E5"> now the game class is going to be</font>
+
+119
+000:004:06,900 --> 000:004:12,269
+the main class<font color="#CCCCCC"> the main part</font><font color="#E5E5E5"> of our game</font>
+
+120
+000:004:09,420 --> 000:004:14,070
+it will hold all<font color="#E5E5E5"> of the base code for</font>
+
+121
+000:004:12,269 --> 000:004:16,080
+<font color="#CCCCCC">our game it'll</font><font color="#E5E5E5"> start everything</font><font color="#CCCCCC"> it'll</font>
+
+122
+000:004:14,070 --> 000:004:18,209
+run<font color="#E5E5E5"> everything and</font><font color="#CCCCCC"> it'll</font><font color="#E5E5E5"> close our game</font>
+
+123
+000:004:16,080 --> 000:004:20,160
+<font color="#E5E5E5">so this game</font><font color="#CCCCCC"> is</font><font color="#E5E5E5"> very important it's</font>
+
+124
+000:004:18,209 --> 000:004:21,600
+<font color="#E5E5E5">going to be the main class of our game</font>
+
+125
+000:004:20,160 --> 000:004:23,700
+we're<font color="#E5E5E5"> going to put a lot of stuff in</font>
+
+126
+000:004:21,600 --> 000:004:25,710
+this class so let's go<font color="#CCCCCC"> ahead</font><font color="#E5E5E5"> and create</font>
+
+127
+000:004:23,700 --> 000:004:27,870
+<font color="#E5E5E5">the game constructor here</font>
+
+128
+000:004:25,710 --> 000:004:30,449
+and our game is going<font color="#E5E5E5"> to need an</font>
+
+129
+000:004:27,870 --> 000:004:32,639
+instance<font color="#E5E5E5"> of our display class here so</font>
+
+130
+000:004:30,449 --> 000:004:34,650
+we'll<font color="#E5E5E5"> create a private display object</font>
+
+131
+000:004:32,639 --> 000:004:35,940
+called display and then we have to
+
+132
+000:004:34,650 --> 000:004:37,710
+<font color="#E5E5E5">initialize our display in our game</font>
+
+133
+000:004:35,940 --> 000:004:40,380
+constructor display<font color="#E5E5E5"> equals new display</font>
+
+134
+000:004:37,710 --> 000:004:42,150
+<font color="#E5E5E5">now</font><font color="#CCCCCC"> our</font><font color="#E5E5E5"> display class takes in a title a</font>
+
+135
+000:004:40,380 --> 000:004:43,949
+width and a height so we'll take those
+
+136
+000:004:42,150 --> 000:004:48,539
+in as parameters in<font color="#E5E5E5"> our game constructor</font>
+
+137
+000:004:43,949 --> 000:004:51,919
+as well width and height and we'll just
+
+138
+000:004:48,539 --> 000:004:56,069
+pass those right along to our<font color="#E5E5E5"> display</font>
+
+139
+000:004:51,919 --> 000:004:58,139
+<font color="#E5E5E5">there we go so now</font><font color="#CCCCCC"> whenever we create a</font>
+
+140
+000:004:56,069 --> 000:005:00,720
+new game instance a new game class
+
+141
+000:004:58,139 --> 000:005:04,410
+instance it'll automatically set a
+
+142
+000:005:00,720 --> 000:005:06,599
+display for<font color="#E5E5E5"> itself to have now I'm also</font>
+
+143
+000:005:04,410 --> 000:005:08,970
+going<font color="#CCCCCC"> to create a few public integers at</font>
+
+144
+000:005:06,599 --> 000:005:10,199
+the top here width and height and<font color="#E5E5E5"> I am</font>
+
+145
+000:005:08,970 --> 000:005:12,060
+just<font color="#E5E5E5"> going to set those to the two</font>
+
+146
+000:005:10,199 --> 000:005:14,009
+<font color="#E5E5E5">parameters</font><font color="#CCCCCC"> that we passed in here that</font>
+
+147
+000:005:12,060 --> 000:005:16,380
+way this class<font color="#E5E5E5"> also has access to the</font>
+
+148
+000:005:14,009 --> 000:005:19,699
+women<font color="#E5E5E5"> hi easily so this dog would that</font>
+
+149
+000:005:16,380 --> 000:005:22,169
+<font color="#E5E5E5">goes</font><font color="#CCCCCC"> width and the Sahai equals height</font>
+
+150
+000:005:19,699 --> 000:005:26,220
+so now whenever<font color="#E5E5E5"> we create a new game</font>
+
+151
+000:005:22,169 --> 000:005:28,800
+like that<font color="#E5E5E5"> it should set the width and</font>
+
+152
+000:005:26,220 --> 000:005:30,539
+<font color="#CCCCCC">height</font><font color="#E5E5E5"> variables up here then initialize</font>
+
+153
+000:005:28,800 --> 000:005:33,330
+a new<font color="#E5E5E5"> display and hopefully get a</font>
+
+154
+000:005:30,539 --> 000:005:34,919
+display<font color="#CCCCCC"> to</font><font color="#E5E5E5"> the screen so if you go into</font>
+
+155
+000:005:33,330 --> 000:005:36,870
+<font color="#E5E5E5">your</font><font color="#CCCCCC"> launcher class instead</font><font color="#E5E5E5"> of</font><font color="#CCCCCC"> having</font><font color="#E5E5E5"> a</font>
+
+156
+000:005:34,919 --> 000:005:39,120
+new display we'll create a<font color="#E5E5E5"> new game</font>
+
+157
+000:005:36,870 --> 000:005:41,969
+instance and we'll pass in our<font color="#E5E5E5"> game</font>
+
+158
+000:005:39,120 --> 000:005:43,229
+title<font color="#E5E5E5"> mine will be tile game and then</font>
+
+159
+000:005:41,969 --> 000:005:47,810
+the width<font color="#E5E5E5"> and</font><font color="#CCCCCC"> height that</font><font color="#E5E5E5"> you want it</font>
+
+160
+000:005:43,229 --> 000:005:49,380
+<font color="#E5E5E5">I'll make mine 400 by 400 there we go</font>
+
+161
+000:005:47,810 --> 000:005:51,000
+that should<font color="#CCCCCC"> do it</font>
+
+162
+000:005:49,380 --> 000:005:52,680
+go ahead and run<font color="#E5E5E5"> your new launcher class</font>
+
+163
+000:005:51,000 --> 000:005:54,810
+<font color="#E5E5E5">that'll</font><font color="#CCCCCC"> create a new game</font><font color="#E5E5E5"> object and</font>
+
+164
+000:005:52,680 --> 000:005:57,030
+look we still have a window displayed to
+
+165
+000:005:54,810 --> 000:005:58,889
+the screen it's<font color="#CCCCCC"> a size that I gave it</font><font color="#E5E5E5"> it</font>
+
+166
+000:005:57,030 --> 000:006:01,050
+has a title<font color="#E5E5E5"> that I gave it everything</font>
+
+167
+000:005:58,889 --> 000:006:03,210
+works the<font color="#E5E5E5"> same it'll have the canvas in</font>
+
+168
+000:006:01,050 --> 000:006:04,560
+it the<font color="#E5E5E5"> only thing that's different is</font>
+
+169
+000:006:03,210 --> 000:006:06,300
+<font color="#CCCCCC">that we're running</font><font color="#E5E5E5"> it from our game</font>
+
+170
+000:006:04,560 --> 000:006:07,919
+class in the<font color="#E5E5E5"> next tutorial we're going</font>
+
+171
+000:006:06,300 --> 000:006:09,630
+<font color="#E5E5E5">to add much</font><font color="#CCCCCC"> more to this</font><font color="#E5E5E5"> game class and</font>
+
+172
+000:006:07,919 --> 000:006:11,639
+<font color="#E5E5E5">hopefully get graphics to the screen in</font>
+
+173
+000:006:09,630 --> 000:006:12,630
+the<font color="#CCCCCC"> next couple of tutorials thanks for</font>
+
+174
+000:006:11,639 --> 000:006:15,020
+watching everyone<font color="#E5E5E5"> I'll see you in the</font>
+
+175
+000:006:12,630 --> 000:006:15,020
+next one

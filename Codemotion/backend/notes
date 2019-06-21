@@ -1,0 +1,16 @@
+region find error:	check every [logical] interval, and see if the segment [optimistic crop or equivalent] is found at least once (in every 10 non-identical frames, which may span much more than 10s)
+	-- GUI elements (if they do not interfere with OCR, are okay), but not menu bars (any distinct "lines", as they are though to be characters)
+	-- content in a window that overlaps with other window(s) is clumped together, but must be recognized
+	-- if there are many changes in that duration, check with more frequency
+	-- each interval where this fails is counted as a percentage of #intervals/10
+	-- takes 3-4x the time to analyze manually, we could think of alternative measures, or I can continue at this pace
+	[larger segments are often okay, but not incomplete ones]
+	
+false positives:	will turn out to be quite high since we're trying to extract all text and there are usually some keywords sprinkled over
+	-- false negatives are consequently far fewer
+	-- we should probably consider incorrect lanugage detection too otherwise this might be suspiciously many zeros
+	-- indirect check of OCR (if garbled enough to matter)
+	
+region find miss:	check every frame to see if the segment is not found (error in frame between intervals is forgivable)
+	-- this is untenable (incredibly tedious to do manually)
+	-- might be hard to explain the difference between an error and a miss

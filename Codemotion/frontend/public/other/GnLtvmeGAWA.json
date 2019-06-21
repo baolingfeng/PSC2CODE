@@ -1,0 +1,29 @@
+{
+"name": Java Tutorial For Beginners 26 - Polymorphism in Java,
+"width": 4,
+"fps": 29.97002997,
+"duration": 609,
+"start": [
+	0, 44, 102, 146, 
+	208, 248, 282, 487, 519, 
+	550, 584, 
+],
+"code": [
+	[""], 
+	["erackage lessonl;\n      O\n   public class MyClass {\n            public static void main(String[] args) {\n"], 
+	["   package lessonl;\nl\nL\n   public class ank {\n         int getInterestRate() {\n               return 0;\n         }\n                                                                                                                                                      r Comm Mm\"\n"], 
+	["package lessonl;\n   'class Bank {\n      getInterestRate() {\n   \"f_return e;\n                                                   v Comm Mylyn\n"], 
+	["   package lessonl;\n   public class BANK_XYZ extends Bank{\n            bnt getInterestRate() {\n                        return 10;\n                  }\n   V\nS\n"], 
+	["package 1esson1;\npublic class Bank {\n         int getInterestRate() {\n                  return 0;\n         }\n                                                                                                                                                                                                            t1; (non-<<W\n                                                                                                                                                                                                               \"ffltai '0 you (ka Ind\n                                                                                                                                                                                                               All-Hod\"! wrip I loch!\n                                                                                                                                                                                                                     A yfllmummfi)\n   I- bade: : oxlum 00mm :\n[061W noun-m.\n"], 
+	["Bank def -- new BANK_DEF();\n   - new BANK_XYZ();\n                        - (01mm Mylyn\n"], 
+	["\"'M 5' ll r'm. ,4 'Etanlr\" . ,\npackage lessonl;\npublic class MyClass {\n   public static void main(String[] args) {\n      Bank m = new Bank_ABC();\n      Bank def = new BANK_DEF();\n      Bank xyz - new BANK_XYZ();\nZ1\n-5\n-6\n-7\n"], 
+	["package lessonl;\npublic class MyClass {\n   public static void main(St fng[] args) {\n      Bank abc = new Bank_ABI )3\n      Bank def =\n      Bank xyz =\n                                                         . Comm Mylyn\n      System.out.\n      System.out.\n"], 
+	["Bank xyz new BA\n   - Carmen My,\"\nSystem.out.print1n\nSystem.out.print1n\nSystem.out.print1n\n"], 
+	["package lessonl;\npublic class MyClass {\n   public static void main(String[] args) {\n      Bank abc = new Bank_ABC();\n      Bank def = new BANK_DEF();\n      Bank = new BANK_XYZ();\noowcwwbwm\nLO\n      System.out.print1n(abc.getInterestRate());\n      System.out.println(def.getInterestRate());\n      System.out.print1n(xyz.getInterestRate());\nL--IL--JU\nLUNHC\nHL--l\nmh\n"], 
+],
+"l": [
+	["Java"], ["Java"], ["Java"], ["Java"], 
+	["Java"], ["Java"], ["Java"], ["Java"], ["Java"], 
+	["Java"], ["Java"], 
+]
+}

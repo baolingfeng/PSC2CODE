@@ -1,0 +1,21 @@
+{
+"name": 3,
+"width": 4,
+"fps": 30,
+"duration": 376,
+"start": [
+	0, 70, 255, 292, 
+	441
+],
+"code": [
+	[""], 
+	["I] Launcher.java [D 'Display.java I-i-I\n   package dev.codenmore.tilegame.display;\n   import javax.swing.JFrame;\n   public class Display {\n      private JFrame frame;\n      private ggavgs canvas;\n      private String title;\n      private int width, height;\n      public Display(String title, int width, int height){\n      this. title = title;\n      this.width = width;\n      this.height = height;\n      createDisplay();\n      }\n      private void createDisplay(){\n      frame = new JFrame title ;\n"], 
+	["m LauncngJava III [I] Display.java :3\n   import java.awt.Canvas;\n   import java.awt.Dimension;\n   import javax.swing.JFrame;\n   public class Display {\n      private JFrame frame;\n      private Canvas canvas;\n      private String title;\n      private int width, height;\n      public Display(String title, int width, int height){\n      this.title = title;\n      this.width = width;\n      this.height = height;\n      createDisplay();\n"], 
+	["File Edit Source Refactor Navigate Search Project Run Window Help\nrfiv awkwowavaec--avazywefi' 11*9vSS.:C/43v\n:: Package Explorer ESE -- (E5 7 E El [3 LauncherJava EI-I E] Display.java\n   16 TiIeGame 1 package dev.codenmor'e.tilegame;\n      [3 src\n      E dev.c$$enmore.tilegame\n                                    import dev.codenmore.tilegame.display.Displ.\n         [I] Launcher.java public class Launcher {\n      E dev.codenmore.ti|egame.display ,\n         @ Display.java 5 public static void.main(String[] args){\n      nJRESystem Library LureEf new 01591334 Tltle! , 300, 300);|\n"], 
+	["@ LauncherJava m Display.java @ Gamejava 2:]\n   package dev.codenmore.ti1egame;\n   import dev.codenmore.tilegame.display.0isplay;\n   public class Game {\nCb \" private Display display;\n      public int width, height;\n      public Game(String title, int width, int height){\n      this.width = width;\n      this.height = height;\n      display = new Display(title, width, height);\n      }I\n"] 
+],
+"l": [
+	["Python"], ["Python"], ["Python"], ["Python"], 
+	["Python"]
+]
+}
